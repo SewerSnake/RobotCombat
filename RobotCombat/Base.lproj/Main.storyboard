@@ -88,7 +88,25 @@
                     <view key="view" contentMode="scaleToFill" id="S4s-v1-GRp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IfX-Q9-vvW">
+                                <rect key="frame" x="163" y="350" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music on/off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VC-U3-g40">
+                                <rect key="frame" x="132" y="286" width="110" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IfX-Q9-vvW" firstAttribute="centerX" secondItem="O3t-mP-DNn" secondAttribute="centerX" id="2ZK-Mn-8tE"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2VC-U3-g40" secondAttribute="trailing" constant="20" symbolic="YES" id="F59-ju-SbW"/>
+                            <constraint firstItem="IfX-Q9-vvW" firstAttribute="top" secondItem="2VC-U3-g40" secondAttribute="bottom" constant="40" id="KFw-lc-QCa"/>
+                            <constraint firstItem="IfX-Q9-vvW" firstAttribute="centerY" secondItem="O3t-mP-DNn" secondAttribute="centerY" id="eqn-tc-wn8"/>
+                            <constraint firstItem="2VC-U3-g40" firstAttribute="leading" secondItem="S4s-v1-GRp" secondAttribute="leading" constant="132" id="gUF-Bb-jwm"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="O3t-mP-DNn"/>
                     </view>
                 </viewController>
