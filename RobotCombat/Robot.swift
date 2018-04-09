@@ -47,8 +47,8 @@ class Robot {
     
     // If the robot's hp is
     // zero, it's considered to
-    // be destroyed. True is then
-    // returned.
+    // be destroyed. true is then
+    // returned. Otherwise, false
     func isDestroyed() -> Bool {
         return self.hp == 0 ? true : false
     }
