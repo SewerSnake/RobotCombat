@@ -38,6 +38,8 @@ class BackgroundMusic {
     
     // Stops the background music.
     func stopMusic() {
-        audioPlayer!.stop()
+        if audioPlayer != nil {
+            audioPlayer!.stop()
+        }
     }
 }
