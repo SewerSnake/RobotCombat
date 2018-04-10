@@ -135,27 +135,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A4a-X4-obe">
-                                <rect key="frame" x="67" y="209" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A4a-X4-obe">
+                                <rect key="frame" x="28" y="64" width="320" height="186"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ah1-fI-EzZ">
-                                <rect key="frame" x="149" y="539" width="76" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drS-Kt-sEF">
+                                <rect key="frame" x="28" y="258" width="320" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ah1-fI-EzZ">
+                                <rect key="frame" x="149" y="482" width="76" height="30"/>
                                 <state key="normal" title="Start game"/>
                             </button>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="drS-Kt-sEF">
-                                <rect key="frame" x="0.0" y="369" width="375" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="drS-Kt-sEF" firstAttribute="centerX" secondItem="ogD-Zu-aIl" secondAttribute="centerX" id="0Me-Qw-v9H"/>
+                            <constraint firstItem="drS-Kt-sEF" firstAttribute="centerY" secondItem="ogD-Zu-aIl" secondAttribute="centerY" id="0UJ-A4-nPA"/>
+                            <constraint firstItem="A4a-X4-obe" firstAttribute="top" secondItem="ogD-Zu-aIl" secondAttribute="top" id="BWb-J6-nr2"/>
+                            <constraint firstItem="A4a-X4-obe" firstAttribute="trailing" secondItem="drS-Kt-sEF" secondAttribute="trailing" id="QoQ-Zs-Yg3"/>
+                            <constraint firstItem="drS-Kt-sEF" firstAttribute="top" secondItem="A4a-X4-obe" secondAttribute="bottom" constant="8" id="bSZ-nx-JzU"/>
+                            <constraint firstItem="Ah1-fI-EzZ" firstAttribute="centerX" secondItem="ogD-Zu-aIl" secondAttribute="centerX" id="df5-D8-kSb"/>
+                            <constraint firstItem="Ah1-fI-EzZ" firstAttribute="top" secondItem="drS-Kt-sEF" secondAttribute="bottom" constant="8" id="iNe-Bg-s2c"/>
+                            <constraint firstItem="A4a-X4-obe" firstAttribute="leading" secondItem="drS-Kt-sEF" secondAttribute="leading" id="xPw-Y3-4nv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ogD-Zu-aIl"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qMk-Qi-4ng" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2033" y="-573"/>
+            <point key="canvasLocation" x="2032.8" y="-573.46326836581716"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hhk-an-7wz">
