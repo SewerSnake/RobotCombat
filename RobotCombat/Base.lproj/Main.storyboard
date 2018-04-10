@@ -65,15 +65,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="This is a robot combat game." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="abb-wG-CTZ">
-                                <rect key="frame" x="16" y="64" width="343" height="583"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This is a robot combat game." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="abb-wG-CTZ">
+                                <rect key="frame" x="16" y="72" width="343" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="abb-wG-CTZ" firstAttribute="leading" secondItem="1Vy-5Y-fIZ" secondAttribute="leading" constant="16" id="1m0-fj-boa"/>
+                            <constraint firstItem="1Vy-5Y-fIZ" firstAttribute="trailing" secondItem="abb-wG-CTZ" secondAttribute="trailing" constant="16" id="8b1-iL-FFb"/>
+                            <constraint firstItem="abb-wG-CTZ" firstAttribute="top" secondItem="1Vy-5Y-fIZ" secondAttribute="top" constant="8" id="R7v-el-22T"/>
+                            <constraint firstItem="abb-wG-CTZ" firstAttribute="leading" secondItem="1Vy-5Y-fIZ" secondAttribute="leading" constant="16" id="UOC-Tq-smU"/>
+                            <constraint firstItem="1Vy-5Y-fIZ" firstAttribute="bottom" secondItem="abb-wG-CTZ" secondAttribute="bottom" constant="16" id="YXh-Co-e9d"/>
+                            <constraint firstItem="1Vy-5Y-fIZ" firstAttribute="bottom" secondItem="abb-wG-CTZ" secondAttribute="bottom" constant="16" id="nKD-SS-gmb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1Vy-5Y-fIZ"/>
                     </view>
                 </viewController>
@@ -84,7 +91,7 @@
         <!--Settings-->
         <scene sceneID="ieE-Hd-bQ9">
             <objects>
-                <viewController title="Settings" id="RFW-05-Hvm" sceneMemberID="viewController">
+                <viewController title="Settings" id="RFW-05-Hvm" customClass="SettingsViewController" customModule="RobotCombat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S4s-v1-GRp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,6 +116,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O3t-mP-DNn"/>
                     </view>
+                    <connections>
+                        <outlet property="toggleMusic" destination="IfX-Q9-vvW" id="uZJ-dE-F6y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YWk-mh-kzM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

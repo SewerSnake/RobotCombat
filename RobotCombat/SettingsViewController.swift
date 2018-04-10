@@ -1,5 +1,5 @@
 //
-//  MainMenuViewController.swift
+//  SettingsViewController.swift
 //  RobotCombat
 //
 //  Created by Eric Groseclos on 2018-04-09.
@@ -8,19 +8,19 @@
 
 import UIKit
 
-class MainMenuViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var toggleMusic: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        BackgroundMusic.sharedHelper.playBackgroundMusic()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
-    
-    
     
 }
