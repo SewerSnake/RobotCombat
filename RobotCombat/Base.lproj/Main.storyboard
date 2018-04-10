@@ -68,7 +68,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="abb-wG-CTZ">
                                 <rect key="frame" x="16" y="72" width="343" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">This is a robot combat game., based on the TV shows "Battlebots", "King of Bots" and "Robot Wars". Choose a robot and beat all of your opponents! Each robot has Hit Points (HP) and an attack value. Just press the "ATTACK" button to do battle.</string>
+                                <string key="text">This is a robot combat game., based on the TV shows "Battlebots", "King of Bots" and "Robot Wars". Also features robots from the American event "RoboGames". Choose a robot and beat all of your opponents! Each robot has Hit Points (HP) and an attack value. Just press the "ATTACK" button to do battle.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -135,33 +135,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A4a-X4-obe">
-                                <rect key="frame" x="28" y="64" width="320" height="186"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A4a-X4-obe">
+                                <rect key="frame" x="27" y="187" width="320" height="186"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drS-Kt-sEF">
-                                <rect key="frame" x="28" y="258" width="320" height="216"/>
-                            </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ah1-fI-EzZ">
-                                <rect key="frame" x="149" y="482" width="76" height="30"/>
+                                <rect key="frame" x="149" y="617" width="76" height="30"/>
                                 <state key="normal" title="Start game"/>
                                 <connections>
                                     <segue destination="uXd-aF-Pe7" kind="show" identifier="combatSegue" id="exb-yD-ktK"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQw-NS-nvf">
+                                <rect key="frame" x="176" y="471" width="23" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x93-zd-Abx">
+                                <rect key="frame" x="165" y="418" width="45" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ATK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oG-gA-rkc">
+                                <rect key="frame" x="172" y="529" width="31" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05I-bu-GWl">
+                                <rect key="frame" x="274" y="567" width="73" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next robot"/>
+                                <connections>
+                                    <action selector="next:" destination="h69-wq-cgm" eventType="touchUpInside" id="bBQ-d4-ikG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cuZ-6f-yRq">
+                                <rect key="frame" x="27" y="567" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Previous robot"/>
+                                <connections>
+                                    <action selector="previous:" destination="h69-wq-cgm" eventType="touchUpInside" id="AZ0-Gs-UZA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="drS-Kt-sEF" firstAttribute="centerX" secondItem="ogD-Zu-aIl" secondAttribute="centerX" id="0Me-Qw-v9H"/>
-                            <constraint firstItem="drS-Kt-sEF" firstAttribute="centerY" secondItem="ogD-Zu-aIl" secondAttribute="centerY" id="0UJ-A4-nPA"/>
-                            <constraint firstItem="A4a-X4-obe" firstAttribute="top" secondItem="ogD-Zu-aIl" secondAttribute="top" id="BWb-J6-nr2"/>
-                            <constraint firstItem="A4a-X4-obe" firstAttribute="trailing" secondItem="drS-Kt-sEF" secondAttribute="trailing" id="QoQ-Zs-Yg3"/>
-                            <constraint firstItem="drS-Kt-sEF" firstAttribute="top" secondItem="A4a-X4-obe" secondAttribute="bottom" constant="8" id="bSZ-nx-JzU"/>
-                            <constraint firstItem="Ah1-fI-EzZ" firstAttribute="centerX" secondItem="ogD-Zu-aIl" secondAttribute="centerX" id="df5-D8-kSb"/>
-                            <constraint firstItem="Ah1-fI-EzZ" firstAttribute="top" secondItem="drS-Kt-sEF" secondAttribute="bottom" constant="8" id="iNe-Bg-s2c"/>
-                            <constraint firstItem="A4a-X4-obe" firstAttribute="leading" secondItem="drS-Kt-sEF" secondAttribute="leading" id="xPw-Y3-4nv"/>
+                            <constraint firstItem="ogD-Zu-aIl" firstAttribute="bottom" secondItem="Ah1-fI-EzZ" secondAttribute="bottom" constant="20" id="HsG-sQ-4yU"/>
+                            <constraint firstItem="Ah1-fI-EzZ" firstAttribute="centerX" secondItem="ogD-Zu-aIl" secondAttribute="centerX" id="UVc-Fp-S9G"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ogD-Zu-aIl"/>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="05I-bu-GWl" id="TbQ-7V-mX0"/>
+                        <outlet property="previousButton" destination="cuZ-6f-yRq" id="V9I-wS-FEx"/>
+                        <outlet property="robotATK" destination="0oG-gA-rkc" id="rik-au-l31"/>
+                        <outlet property="robotHP" destination="aQw-NS-nvf" id="MZx-hE-eDg"/>
+                        <outlet property="robotImage" destination="A4a-X4-obe" id="VnE-Ch-cok"/>
+                        <outlet property="robotName" destination="x93-zd-Abx" id="9rk-PY-sgi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qMk-Qi-4ng" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -33,6 +33,7 @@ class BackgroundMusic {
             audioPlayer!.play()
         } catch {
             print("Cannot play mp3 file")
+            return
         }
     }
     

@@ -10,16 +10,39 @@ import UIKit
 
 class ChooseRobotViewController: UIViewController {
     
+    @IBOutlet weak var robotImage: UIImageView!
+    
+    @IBOutlet weak var robotName: UILabel!
+    
+    @IBOutlet weak var robotHP: UILabel!
+    
+    @IBOutlet weak var robotATK: UILabel!
+    
+    @IBOutlet weak var previousButton: UIButton!
+    
+    @IBOutlet weak var nextButton: UIButton!
+    
     private var chosenRobot: String!
+    
+    private let defaultBot: String = "Sewer Snake"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        chosenRobot = "Sewer Snake"
+        robotImage.image = UIImage(named: defaultBot)
+        chosenRobot = defaultBot
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
+    }
+    
+    
+    @IBAction func previous(_ sender: Any) {
+        
+    }
+    
+    @IBAction func next(_ sender: Any) {
         
     }
     
