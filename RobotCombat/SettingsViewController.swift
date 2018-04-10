@@ -23,4 +23,15 @@ class SettingsViewController: UIViewController {
         
     }
     
+    // If the background music is currently
+    // playing, it's turned off.
+    // Otherwise, it's turned on.
+    @IBAction func musicSwitch(_ sender: Any) {
+        if toggleMusic.isOn {
+            BackgroundMusic.sharedHelper.playBackgroundMusic()
+        } else {
+            BackgroundMusic.sharedHelper.stopMusic()
+        }
+    }
+    
 }

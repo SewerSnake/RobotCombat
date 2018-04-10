@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		183E5B4F207C948800B432D2 /* BackgroundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E5B4E207C948800B432D2 /* BackgroundMusic.swift */; };
+		183E5B51207CA15E00B432D2 /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 183E5B50207CA15D00B432D2 /* intro.mp3 */; };
 		187D23DF20750ABF00AEDACB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187D23DE20750ABF00AEDACB /* AppDelegate.swift */; };
 		187D23E420750AC000AEDACB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187D23E220750AC000AEDACB /* Main.storyboard */; };
 		187D23E620750AC200AEDACB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187D23E520750AC200AEDACB /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		183E5B4E207C948800B432D2 /* BackgroundMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMusic.swift; sourceTree = "<group>"; };
+		183E5B50207CA15D00B432D2 /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = intro.mp3; sourceTree = "<group>"; };
 		187D23DB20750ABF00AEDACB /* RobotCombat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobotCombat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		187D23DE20750ABF00AEDACB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		187D23E320750AC000AEDACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				18AB08F7207B7D5000623B08 /* ChooseRobotViewController.swift */,
 				18AB08F9207B8C2000623B08 /* SettingsViewController.swift */,
 				183E5B4E207C948800B432D2 /* BackgroundMusic.swift */,
+				183E5B50207CA15D00B432D2 /* intro.mp3 */,
 			);
 			path = RobotCombat;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 				187D23E920750AC200AEDACB /* LaunchScreen.storyboard in Resources */,
 				187D23E620750AC200AEDACB /* Assets.xcassets in Resources */,
 				187D23E420750AC000AEDACB /* Main.storyboard in Resources */,
+				183E5B51207CA15E00B432D2 /* intro.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
