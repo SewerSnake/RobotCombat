@@ -22,14 +22,20 @@ class ChooseRobotViewController: UIViewController {
     
     @IBOutlet weak var nextButton: UIButton!
     
-    private var chosenRobot: String!
+    private var robots: [String]!
     
-    private let defaultBot: String = "Sewer Snake"
+    private var currentIndex: Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        robotImage.image = UIImage(named: defaultBot)
-        chosenRobot = defaultBot
+        
+        self.currentIndex = 0
+        
+        self.robots = ["Sewer Snake","Last Rites","Original Sin","Spectre"]
+        
+        loadImageForIndex()
+        
+        getStats()
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,13 +43,51 @@ class ChooseRobotViewController: UIViewController {
         
     }
     
-    
-    @IBAction func previous(_ sender: Any) {
-        
+    // Loads the corresponding image
+    // for the current index.
+    func loadImageForIndex() {
+        robotImage.image  = UIImage(named: self.robots[currentIndex])
     }
     
-    @IBAction func next(_ sender: Any) {
+    // Shows the previous robot in the array.
+    // Overlaps with the end of the list.
+    @IBAction func previous(_ sender: Any) {
+        self.currentIndex = self.currentIndex - 1
         
+        if self.currentIndex == -1 {
+            self.currentIndex = self.robots.count - 1
+        }
+        
+        loadImageForIndex()
+        
+        getStats()
+    }
+    
+    // Shows the next robot in the array.
+    // Overlaps with the start of the list.
+    @IBAction func next(_ sender: Any) {
+        self.currentIndex = self.currentIndex + 1
+        
+        if self.currentIndex == self.robots.count {
+            self.currentIndex = 0
+        }
+        
+        loadImageForIndex()
+        
+        getStats()
+    }
+    
+    // Changes the three labels to
+    // match the current robot's
+    // name, HP and ATK.
+    func getStats() {
+        let robot = PitStop.getRobot(self.robots[currentIndex])
+        
+        robotName.text = robot.getName()
+        
+        robotHP.text = "HP: \(robot.getHp())"
+        
+        robotATK.text = "ATK: \(robot.getAttack())"
     }
     
    
@@ -54,7 +98,7 @@ class ChooseRobotViewController: UIViewController {
         if segue.identifier == "combatSegue" {
             let combatHandler: CombatViewController = segue.destination as! CombatViewController
             
-            combatHandler.playerChoice = self.chosenRobot
+            combatHandler.playerChoice = self.robots[currentIndex]
         }
     }
    
