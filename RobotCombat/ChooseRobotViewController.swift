@@ -9,11 +9,13 @@
 import UIKit
 
 class ChooseRobotViewController: UIViewController {
+    
+    private var chosenRobot: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        chosenRobot = "Sewer Snake"
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,12 +23,16 @@ class ChooseRobotViewController: UIViewController {
         
     }
     
-
    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if segue.identifier == "combatSegue" {
+            let combatHandler: CombatViewController = segue.destination as! CombatViewController
+            
+            combatHandler.playerRobot = self.chosenRobot
+        }
     }
    
 

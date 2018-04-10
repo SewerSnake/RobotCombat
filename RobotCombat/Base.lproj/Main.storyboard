@@ -127,10 +127,10 @@
             </objects>
             <point key="canvasLocation" x="2034" y="910"/>
         </scene>
-        <!--Choose Robot View Controller-->
+        <!--Choose robot-->
         <scene sceneID="AOW-ha-Alz">
             <objects>
-                <viewController id="h69-wq-cgm" customClass="ChooseRobotViewController" customModule="RobotCombat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Choose robot" id="h69-wq-cgm" customClass="ChooseRobotViewController" customModule="RobotCombat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xm7-Ey-ZvH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,6 +144,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ah1-fI-EzZ">
                                 <rect key="frame" x="149" y="482" width="76" height="30"/>
                                 <state key="normal" title="Start game"/>
+                                <connections>
+                                    <segue destination="uXd-aF-Pe7" kind="show" identifier="combatSegue" id="exb-yD-ktK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -163,6 +166,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qMk-Qi-4ng" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2032.8" y="-573.46326836581716"/>
+        </scene>
+        <!--Combat View Controller-->
+        <scene sceneID="5lh-Gm-mWE">
+            <objects>
+                <viewController id="uXd-aF-Pe7" customClass="CombatViewController" customModule="RobotCombat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rQo-U0-vkN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="U20-Mg-6ji"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aKU-9c-hEB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2889" y="-573"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hhk-an-7wz">
