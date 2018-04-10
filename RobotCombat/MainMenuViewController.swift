@@ -13,7 +13,7 @@ class MainMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        BackgroundMusic.sharedHelper.playBackgroundMusic()
+        //BackgroundMusic.sharedHelper.playBackgroundMusic()
     }
 
     override func didReceiveMemoryWarning() {

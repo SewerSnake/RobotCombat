@@ -31,7 +31,7 @@ class ChooseRobotViewController: UIViewController {
         if segue.identifier == "combatSegue" {
             let combatHandler: CombatViewController = segue.destination as! CombatViewController
             
-            combatHandler.playerRobot = self.chosenRobot
+            combatHandler.playerChoice = self.chosenRobot
         }
     }
    
