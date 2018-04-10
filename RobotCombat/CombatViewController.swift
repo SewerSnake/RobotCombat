@@ -14,6 +14,10 @@ class CombatViewController: UIViewController {
     
     @IBOutlet weak var enemyRobot: UIImageView!
     
+    private var player: Robot!
+    
+    private var enemy: Robot!
+    
     var playerChoice: String!
 
     override func viewDidLoad() {
@@ -29,8 +33,12 @@ class CombatViewController: UIViewController {
     
     // Loads the images of the robots
     // into the ImageViews.
+    // Also fetches the appropriate
+    // robot for the 'player' property.
     func loadRobots() {
         playerRobot.image = UIImage(named: playerChoice)
+        self.player = PitStop.getRobot(playerChoice)
+        
         enemyRobot.image = UIImage(named: "Spectre")
     }
     

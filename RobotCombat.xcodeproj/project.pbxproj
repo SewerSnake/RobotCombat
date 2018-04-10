@@ -10,6 +10,7 @@
 		183E5B4F207C948800B432D2 /* BackgroundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E5B4E207C948800B432D2 /* BackgroundMusic.swift */; };
 		183E5B51207CA15E00B432D2 /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 183E5B50207CA15D00B432D2 /* intro.mp3 */; };
 		183E5B53207CBB5500B432D2 /* CombatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E5B52207CBB5500B432D2 /* CombatViewController.swift */; };
+		183E5B55207CF5FB00B432D2 /* PitStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E5B54207CF5FB00B432D2 /* PitStop.swift */; };
 		187D23DF20750ABF00AEDACB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187D23DE20750ABF00AEDACB /* AppDelegate.swift */; };
 		187D23E420750AC000AEDACB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187D23E220750AC000AEDACB /* Main.storyboard */; };
 		187D23E620750AC200AEDACB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187D23E520750AC200AEDACB /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		183E5B4E207C948800B432D2 /* BackgroundMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMusic.swift; sourceTree = "<group>"; };
 		183E5B50207CA15D00B432D2 /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = intro.mp3; sourceTree = "<group>"; };
 		183E5B52207CBB5500B432D2 /* CombatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatViewController.swift; sourceTree = "<group>"; };
+		183E5B54207CF5FB00B432D2 /* PitStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitStop.swift; sourceTree = "<group>"; };
 		187D23DB20750ABF00AEDACB /* RobotCombat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobotCombat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		187D23DE20750ABF00AEDACB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		187D23E320750AC000AEDACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				183E5B4E207C948800B432D2 /* BackgroundMusic.swift */,
 				183E5B50207CA15D00B432D2 /* intro.mp3 */,
 				183E5B52207CBB5500B432D2 /* CombatViewController.swift */,
+				183E5B54207CF5FB00B432D2 /* PitStop.swift */,
 			);
 			path = RobotCombat;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				18AB08F8207B7D5000623B08 /* ChooseRobotViewController.swift in Sources */,
 				18AB08F6207B6CDA00623B08 /* MainMenuViewController.swift in Sources */,
 				183E5B53207CBB5500B432D2 /* CombatViewController.swift in Sources */,
+				183E5B55207CF5FB00B432D2 /* PitStop.swift in Sources */,
 				18AB08F4207B68E500623B08 /* Robot.swift in Sources */,
 				18AB08FA207B8C2000623B08 /* SettingsViewController.swift in Sources */,
 				187D23DF20750ABF00AEDACB /* AppDelegate.swift in Sources */,

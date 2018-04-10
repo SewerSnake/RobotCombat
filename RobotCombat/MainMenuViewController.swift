@@ -21,6 +21,4 @@ class MainMenuViewController: UIViewController {
         
     }
     
-    
-    
 }
