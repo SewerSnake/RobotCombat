@@ -10,6 +10,10 @@ import Foundation
 
 class Combat {
     
+    private var damage: Int!
+    
+    private var robot: String!
+    
     enum SewerSnake: Int {
         case FlameThrower = 30
         case ForkRush = 45
@@ -34,15 +38,33 @@ class Combat {
         case Haul = 45
     }
     
+    // The attack of the enemy robot
+    // is decided randomly. The damage to
+    // the player is calculated and returned.
+    func calcDamageAI(_ enemyRobot: String) -> Int {
+        self.robot = enemyRobot
+        
+        let attack: Int = Int(arc4random_uniform(3) + 1)
+        
+        calculate(attack)
+        
+        return damage
+    }
+    
+    // The attack number and robot name are provided by the SKScene.
+    // The damage to the AI is calculated and returned.
+    func calcDamagePlayer(_ playerRobot: String, _ attackNumber: Int) -> Int {
+        self.robot = playerRobot
+        
+        calculate(attackNumber)
+        
+        return damage
+    }
+    
     // Calculates how much the damage
-    // the attack of the AI robot does
-    // to the player robot.
-    func calcDamageAI(_ robot: String) -> Int {
-        
-        var damage: Int
-        
-        let attack: Int = Int(arc4random_uniform(3) + 1) // 0-2 + 1 = 1-3
-        
+    // the attack of the robot does
+    // to its enemy.
+    func calculate(_ attack: Int) {
         switch robot {
             
         case "Sewer Snake":
@@ -88,8 +110,6 @@ class Combat {
         default:
             damage = 0
         }
-        
-        return damage
     }
     
 }
