@@ -22,7 +22,7 @@ class CombatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         loadRobots()
     }
 

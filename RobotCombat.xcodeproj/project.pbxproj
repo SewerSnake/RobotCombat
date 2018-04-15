@@ -15,6 +15,7 @@
 		187D23E420750AC000AEDACB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187D23E220750AC000AEDACB /* Main.storyboard */; };
 		187D23E620750AC200AEDACB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 187D23E520750AC200AEDACB /* Assets.xcassets */; };
 		187D23E920750AC200AEDACB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187D23E720750AC200AEDACB /* LaunchScreen.storyboard */; };
+		1892FE6520826A1900AA5030 /* Combat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1892FE6420826A1900AA5030 /* Combat.swift */; };
 		18AB08F4207B68E500623B08 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AB08F3207B68E500623B08 /* Robot.swift */; };
 		18AB08F6207B6CDA00623B08 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AB08F5207B6CDA00623B08 /* MainMenuViewController.swift */; };
 		18AB08F8207B7D5000623B08 /* ChooseRobotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AB08F7207B7D5000623B08 /* ChooseRobotViewController.swift */; };
@@ -32,6 +33,7 @@
 		187D23E520750AC200AEDACB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		187D23E820750AC200AEDACB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		187D23EA20750AC200AEDACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1892FE6420826A1900AA5030 /* Combat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Combat.swift; sourceTree = "<group>"; };
 		18AB08F3207B68E500623B08 /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
 		18AB08F5207B6CDA00623B08 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		18AB08F7207B7D5000623B08 /* ChooseRobotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRobotViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				183E5B50207CA15D00B432D2 /* intro.mp3 */,
 				183E5B52207CBB5500B432D2 /* CombatViewController.swift */,
 				183E5B54207CF5FB00B432D2 /* PitStop.swift */,
+				1892FE6420826A1900AA5030 /* Combat.swift */,
 			);
 			path = RobotCombat;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18AB08F8207B7D5000623B08 /* ChooseRobotViewController.swift in Sources */,
+				1892FE6520826A1900AA5030 /* Combat.swift in Sources */,
 				18AB08F6207B6CDA00623B08 /* MainMenuViewController.swift in Sources */,
 				183E5B53207CBB5500B432D2 /* CombatViewController.swift in Sources */,
 				183E5B55207CF5FB00B432D2 /* PitStop.swift in Sources */,
