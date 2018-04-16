@@ -26,6 +26,10 @@ class ChooseRobotViewController: UIViewController {
     
     private var currentIndex: Int!
 
+    // Assigns the array with the names
+    // of the robots in the game.
+    // Loads the picture and stats of
+    // the robot "Sewer Snake".
     override func viewDidLoad() {
         super.viewDidLoad()
         
