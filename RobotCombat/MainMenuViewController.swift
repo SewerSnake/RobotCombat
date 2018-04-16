@@ -10,6 +10,9 @@ import UIKit
 
 class MainMenuViewController: UIViewController {
 
+    // Starts playing background music.
+    // The name of the file is
+    // "intro.mp3".
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,7 +21,6 @@ class MainMenuViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
 }
