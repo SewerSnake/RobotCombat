@@ -40,7 +40,9 @@ class Combat {
     
     // The attack of the enemy robot
     // is decided randomly. The damage the AI
-    // does to the player is calculated and returned.
+    // does to the player is calculated by
+    // accessing the corresponding enum for
+    // the AI's robot.
     func calcDamageAI(_ enemyRobot: String) -> Int {
         self.robot = enemyRobot
         
@@ -52,7 +54,8 @@ class Combat {
     }
     
     // The attack number and robot name are provided by the SKScene.
-    // The damage the player does to the AI is calculated and returned.
+    // The damage the player does to the AI is calculated by
+    // accessing the corresponding enum for the player's robot.
     func calcDamagePlayer(_ playerRobot: String, _ attackNumber: Int) -> Int {
         self.robot = playerRobot
         

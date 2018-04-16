@@ -11,7 +11,9 @@ import Foundation
 class PitStop {
     
     // Retrieves an object of class Robot
-    // for the given robot name.
+    // for the given robot name. The robot
+    // "Sewer Snake" is returned as a default
+    // value.
     static func getRobot(_ theBot: String) -> Robot {
         
         switch theBot {

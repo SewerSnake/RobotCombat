@@ -33,7 +33,7 @@ class Robot {
         return self.attack
     }
     
-    // Reduces the robot's hp
+    // Reduces the robot's HP
     // by the damage taken.
     // Ensures that it cannot
     // go below zero.
