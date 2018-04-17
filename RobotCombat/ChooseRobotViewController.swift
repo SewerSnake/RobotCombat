@@ -44,7 +44,6 @@ class ChooseRobotViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     // Loads the corresponding image

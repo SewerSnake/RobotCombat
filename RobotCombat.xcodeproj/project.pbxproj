@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181E97BD20850EE6008C3DBE /* CombatScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 181E97BC20850EE6008C3DBE /* CombatScene.sks */; };
 		183E5B4F207C948800B432D2 /* BackgroundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E5B4E207C948800B432D2 /* BackgroundMusic.swift */; };
 		183E5B51207CA15E00B432D2 /* intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 183E5B50207CA15D00B432D2 /* intro.mp3 */; };
 		183E5B53207CBB5500B432D2 /* CombatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E5B52207CBB5500B432D2 /* CombatViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181E97BC20850EE6008C3DBE /* CombatScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CombatScene.sks; sourceTree = "<group>"; };
 		183E5B4E207C948800B432D2 /* BackgroundMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMusic.swift; sourceTree = "<group>"; };
 		183E5B50207CA15D00B432D2 /* intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = intro.mp3; sourceTree = "<group>"; };
 		183E5B52207CBB5500B432D2 /* CombatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				183E5B52207CBB5500B432D2 /* CombatViewController.swift */,
 				183E5B54207CF5FB00B432D2 /* PitStop.swift */,
 				1892FE6420826A1900AA5030 /* Combat.swift */,
+				181E97BC20850EE6008C3DBE /* CombatScene.sks */,
 			);
 			path = RobotCombat;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				187D23E920750AC200AEDACB /* LaunchScreen.storyboard in Resources */,
 				187D23E620750AC200AEDACB /* Assets.xcassets in Resources */,
 				187D23E420750AC000AEDACB /* Main.storyboard in Resources */,
+				181E97BD20850EE6008C3DBE /* CombatScene.sks in Resources */,
 				183E5B51207CA15E00B432D2 /* intro.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -224,51 +224,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KbR-Xl-TOx">
-                                <rect key="frame" x="67" y="302" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="LSL-kQ-HIO"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pm0-E5-TBe">
-                                <rect key="frame" x="67" y="120" width="240" height="123"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9d-ex-UMB">
-                                <rect key="frame" x="173" y="259" width="28" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05G-LZ-k3M">
-                                <rect key="frame" x="159" y="455" width="56" height="30"/>
-                                <state key="normal" title="ATTACK"/>
-                            </button>
+                            <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usm-uh-OeO" customClass="CombatScene">
+                                <rect key="frame" x="16" y="64" width="343" height="583"/>
+                            </skView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Pm0-E5-TBe" firstAttribute="centerX" secondItem="U20-Mg-6ji" secondAttribute="centerX" id="0J4-TL-EhF"/>
-                            <constraint firstItem="KbR-Xl-TOx" firstAttribute="centerY" secondItem="U20-Mg-6ji" secondAttribute="centerY" id="5LZ-O4-EAz"/>
-                            <constraint firstItem="05G-LZ-k3M" firstAttribute="top" secondItem="KbR-Xl-TOx" secondAttribute="bottom" constant="25" id="Jcc-8n-CRx"/>
-                            <constraint firstItem="Pm0-E5-TBe" firstAttribute="top" secondItem="U20-Mg-6ji" secondAttribute="top" constant="56" id="RwD-Z7-rSK"/>
-                            <constraint firstItem="D9d-ex-UMB" firstAttribute="top" secondItem="Pm0-E5-TBe" secondAttribute="bottom" constant="16" id="U3r-Dy-MYb"/>
-                            <constraint firstItem="KbR-Xl-TOx" firstAttribute="centerX" secondItem="D9d-ex-UMB" secondAttribute="centerX" id="ZK8-Nk-ytM"/>
-                            <constraint firstItem="KbR-Xl-TOx" firstAttribute="leading" secondItem="U20-Mg-6ji" secondAttribute="leading" constant="67" id="ioR-Cz-oRT"/>
-                            <constraint firstItem="KbR-Xl-TOx" firstAttribute="top" secondItem="D9d-ex-UMB" secondAttribute="bottom" constant="16" id="py1-xg-pbI"/>
-                            <constraint firstItem="KbR-Xl-TOx" firstAttribute="centerX" secondItem="05G-LZ-k3M" secondAttribute="centerX" id="q6P-kk-SWZ"/>
-                            <constraint firstItem="KbR-Xl-TOx" firstAttribute="centerX" secondItem="U20-Mg-6ji" secondAttribute="centerX" id="qe4-Rt-E2I"/>
-                            <constraint firstItem="D9d-ex-UMB" firstAttribute="centerX" secondItem="U20-Mg-6ji" secondAttribute="centerX" id="toO-w7-3gk"/>
-                            <constraint firstItem="Pm0-E5-TBe" firstAttribute="leading" secondItem="KbR-Xl-TOx" secondAttribute="leading" id="uP1-Uh-aCP"/>
+                            <constraint firstItem="usm-uh-OeO" firstAttribute="top" secondItem="U20-Mg-6ji" secondAttribute="top" id="6aR-3q-jDK"/>
+                            <constraint firstItem="U20-Mg-6ji" firstAttribute="bottom" secondItem="usm-uh-OeO" secondAttribute="bottom" constant="20" id="OAu-nz-5NO"/>
+                            <constraint firstItem="usm-uh-OeO" firstAttribute="leading" secondItem="U20-Mg-6ji" secondAttribute="leading" constant="16" id="haJ-W3-YjB"/>
+                            <constraint firstItem="U20-Mg-6ji" firstAttribute="trailing" secondItem="usm-uh-OeO" secondAttribute="trailing" constant="16" id="oNE-T2-1R9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U20-Mg-6ji"/>
                     </view>
-                    <connections>
-                        <outlet property="enemyRobot" destination="Pm0-E5-TBe" id="eQ1-CA-4NS"/>
-                        <outlet property="playerRobot" destination="KbR-Xl-TOx" id="EP2-kE-C22"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKU-9c-hEB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2889" y="-573"/>
+            <point key="canvasLocation" x="2888.8000000000002" y="-573.46326836581716"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hhk-an-7wz">
