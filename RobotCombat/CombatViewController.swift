@@ -7,23 +7,28 @@
 //
 
 import UIKit
+import SpriteKit
+import GameplayKit
 
 class CombatViewController: UIViewController {
     
-    @IBOutlet weak var playerRobot: UIImageView!
-    
-    @IBOutlet weak var enemyRobot: UIImageView!
-    
-    private var player: Robot!
-    
-    private var enemy: Robot!
-    
-    var playerChoice: String!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadRobots()
+        if let view = self.view as! SKView? {
+            
+            if let scene = SKScene(fileNamed: "CombatScene") {
+                
+                scene.scaleMode = .aspectFill
+                
+                view.presentScene(scene)
+            }
+            
+            view.ignoresSiblingOrder = true
+            
+            view.showsFPS = true
+            view.showsNodeCount = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,15 +36,8 @@ class CombatViewController: UIViewController {
         
     }
     
-    // Loads the images of the robots
-    // into the ImageViews.
-    // Also fetches the appropriate
-    // robot for the 'player' property.
-    func loadRobots() {
-        playerRobot.image = UIImage(named: playerChoice)
-        self.player = PitStop.getRobot(playerChoice)
-        
-        enemyRobot.image = UIImage(named: "Spectre")
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
 }

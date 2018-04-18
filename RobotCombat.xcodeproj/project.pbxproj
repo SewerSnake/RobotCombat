@@ -21,6 +21,8 @@
 		18AB08F6207B6CDA00623B08 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AB08F5207B6CDA00623B08 /* MainMenuViewController.swift */; };
 		18AB08F8207B7D5000623B08 /* ChooseRobotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AB08F7207B7D5000623B08 /* ChooseRobotViewController.swift */; };
 		18AB08FA207B8C2000623B08 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AB08F9207B8C2000623B08 /* SettingsViewController.swift */; };
+		18ED02A12087B3D90082EE47 /* CombatScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED02A02087B3D90082EE47 /* CombatScene.swift */; };
+		18ED02A32087BCF60082EE47 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ED02A22087BCF60082EE47 /* GameObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		18AB08F5207B6CDA00623B08 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		18AB08F7207B7D5000623B08 /* ChooseRobotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseRobotViewController.swift; sourceTree = "<group>"; };
 		18AB08F9207B8C2000623B08 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		18ED02A02087B3D90082EE47 /* CombatScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatScene.swift; sourceTree = "<group>"; };
+		18ED02A22087BCF60082EE47 /* GameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 				183E5B54207CF5FB00B432D2 /* PitStop.swift */,
 				1892FE6420826A1900AA5030 /* Combat.swift */,
 				181E97BC20850EE6008C3DBE /* CombatScene.sks */,
+				18ED02A02087B3D90082EE47 /* CombatScene.swift */,
+				18ED02A22087BCF60082EE47 /* GameObject.swift */,
 			);
 			path = RobotCombat;
 			sourceTree = "<group>";
@@ -164,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18ED02A32087BCF60082EE47 /* GameObject.swift in Sources */,
 				18AB08F8207B7D5000623B08 /* ChooseRobotViewController.swift in Sources */,
 				1892FE6520826A1900AA5030 /* Combat.swift in Sources */,
 				18AB08F6207B6CDA00623B08 /* MainMenuViewController.swift in Sources */,
@@ -172,6 +179,7 @@
 				18AB08F4207B68E500623B08 /* Robot.swift in Sources */,
 				18AB08FA207B8C2000623B08 /* SettingsViewController.swift in Sources */,
 				187D23DF20750ABF00AEDACB /* AppDelegate.swift in Sources */,
+				18ED02A12087B3D90082EE47 /* CombatScene.swift in Sources */,
 				183E5B4F207C948800B432D2 /* BackgroundMusic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

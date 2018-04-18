@@ -31,25 +31,24 @@ class PitStop {
         }
     }
     
-    // Retrieves an object of class Robot.
-    // The robot is decided at random. Used
-    // for deciding the AI's robot.
-    static func getRandomRobot() -> Robot {
+    // Retrieves the name of a random robot.
+    // Used for deciding the AI's robot.
+    static func getRandomRobot() -> String {
         
         let randomBot: Int = Int(arc4random_uniform(4)) + 1
         
         switch randomBot {
             
         case 1:
-            return Robot(name: "Sewer Snake", hp: 100, attack: 25)
+            return "Sewer Snake"
         case 2:
-            return Robot(name: "Last Rites", hp: 85, attack: 35)
+            return "Last Rites"
         case 3:
-            return Robot(name: "Original Sin", hp: 120, attack: 20)
+            return "Original Sin"
         case 4:
-            return Robot(name: "Spectre", hp: 90, attack: 30)
+            return "Spectre"
         default:
-            return Robot(name: "Sewer Snake", hp: 100, attack: 25)
+            return "Sewer Snake"
         }
     }
     

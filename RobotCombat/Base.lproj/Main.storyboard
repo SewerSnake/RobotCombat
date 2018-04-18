@@ -220,21 +220,10 @@
         <scene sceneID="5lh-Gm-mWE">
             <objects>
                 <viewController title="Combat" id="uXd-aF-Pe7" customClass="CombatViewController" customModule="RobotCombat" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rQo-U0-vkN">
+                    <view key="view" contentMode="scaleToFill" id="rQo-U0-vkN" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="usm-uh-OeO" customClass="CombatScene">
-                                <rect key="frame" x="16" y="64" width="343" height="583"/>
-                            </skView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="usm-uh-OeO" firstAttribute="top" secondItem="U20-Mg-6ji" secondAttribute="top" id="6aR-3q-jDK"/>
-                            <constraint firstItem="U20-Mg-6ji" firstAttribute="bottom" secondItem="usm-uh-OeO" secondAttribute="bottom" constant="20" id="OAu-nz-5NO"/>
-                            <constraint firstItem="usm-uh-OeO" firstAttribute="leading" secondItem="U20-Mg-6ji" secondAttribute="leading" constant="16" id="haJ-W3-YjB"/>
-                            <constraint firstItem="U20-Mg-6ji" firstAttribute="trailing" secondItem="usm-uh-OeO" secondAttribute="trailing" constant="16" id="oNE-T2-1R9"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="U20-Mg-6ji"/>
                     </view>
                 </viewController>

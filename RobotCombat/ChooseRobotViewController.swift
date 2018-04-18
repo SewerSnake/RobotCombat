@@ -101,7 +101,7 @@ class ChooseRobotViewController: UIViewController {
         if segue.identifier == "combatSegue" {
             let combatHandler: CombatViewController = segue.destination as! CombatViewController
             
-            combatHandler.playerChoice = self.robots[currentIndex]
+            //TODO: save self.robots[currentIndex] to UserDefaults!
         }
     }
    
