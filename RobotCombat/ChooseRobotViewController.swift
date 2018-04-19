@@ -99,9 +99,11 @@ class ChooseRobotViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "combatSegue" {
-            let combatHandler: CombatViewController = segue.destination as! CombatViewController
+            let userDefaults: UserDefaults = UserDefaults.standard
             
-            //TODO: save self.robots[currentIndex] to UserDefaults!
+            userDefaults.set(self.robots[currentIndex], forKey: "playerRobot")
+            
+            userDefaults.synchronize()
         }
     }
    

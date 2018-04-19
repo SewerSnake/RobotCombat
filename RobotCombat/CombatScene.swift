@@ -28,7 +28,10 @@ class CombatScene: SKScene {
     }
     
     func makePlayerSprite() {
-        let robotName: String = PitStop.getRandomRobot()
+        let userDefaults: UserDefaults = UserDefaults.standard
+        
+        let robotName: String = userDefaults.string(forKey: "playerRobot")!
+        
         playerSprite = SKSpriteNode(imageNamed: robotName)
         
         playerSprite.position = CGPoint(x: 0, y: -self.size.height / 3)
