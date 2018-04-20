@@ -16,7 +16,11 @@ class CombatScene: SKScene {
     
     private var playerSprite: SKSpriteNode!
     
+    private var playerRobot: String!
+    
     private var enemySprite: SKSpriteNode!
+    
+    private let info: SKLabelNode = SKLabelNode()
     
     //private var player: GameObject!
     
@@ -25,18 +29,19 @@ class CombatScene: SKScene {
     override func didMove(to view: SKView) {
         makePlayerSprite()
         makeEnemySprite()
+        makeUI()
     }
     
     func makePlayerSprite() {
         let userDefaults: UserDefaults = UserDefaults.standard
         
-        let robotName: String = userDefaults.string(forKey: "playerRobot")!
+        playerRobot = userDefaults.string(forKey: "playerRobot")!
         
-        playerSprite = SKSpriteNode(imageNamed: robotName)
+        playerSprite = SKSpriteNode(imageNamed: playerRobot)
         
         playerSprite.position = CGPoint(x: 0, y: -self.size.height / 3)
         
-        scaleImage(playerSprite, robotName)
+        scaleImage(playerSprite, playerRobot)
         
         addChild(playerSprite)
     }
@@ -72,6 +77,60 @@ class CombatScene: SKScene {
             sprite.xScale = 1
             sprite.yScale = 1
         }
+    }
+    
+    func makeUI() {
+        
+        info.color = UIColor.white
+        info.fontSize = 28
+        info.fontName = "American Typewriter"
+        info.position = CGPoint(x: 0, y: -self.size.height / 2)
+        info.text = "TEST"
+        addChild(info)
+        
+        let attackOne: SKLabelNode = SKLabelNode()
+        info.color = UIColor.white
+        info.fontSize = 30
+        info.fontName = "American Typewriter"
+        info.position = CGPoint(x: -self.size.width / 3, y: -self.size.height / 3)
+        info.text = "ATTACK 1"
+        attackOne.name = "attackOne"
+        addChild(attackOne)
+        
+        let attackThree: SKLabelNode = SKLabelNode()
+        info.color = UIColor.white
+        info.fontSize = 30
+        info.fontName = "American Typewriter"
+        info.position = CGPoint(x: self.size.width / 3, y: -self.size.height / 3)
+        info.text = "ATTACK 3"
+        attackOne.name = "attackThree"
+        addChild(attackThree)
+        //var attackTwo: SKLabelNode
+        //var attackThree: SKLabelNode
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //print("TOUCH!")
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            let node = atPoint(location)
+            
+            if node.name == "attackOne" {
+                executeAttackPlayer(1)
+                info.text = "1"
+            } else if node.name == "attackTwo" {
+                executeAttackPlayer(2)
+                info.text = "2"
+            } else if node.name == "attackThree" {
+                executeAttackPlayer(3)
+                info.text = "3"
+            }
+        }
+    }
+    
+    func executeAttackPlayer(_ attackIndex: Int) {
+        
     }
     
 }
