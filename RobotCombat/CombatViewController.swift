@@ -12,6 +12,9 @@ import GameplayKit
 
 class CombatViewController: UIViewController {
     
+    // Loads SKScene "CombatScene" and starts it.
+    // Ensures that the scene takes up the entire
+    // screen of the phone.
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +40,7 @@ class CombatViewController: UIViewController {
         
     }
     
+    // Ensures that the status bar is hidden.
     override var prefersStatusBarHidden: Bool {
         return true
     }
