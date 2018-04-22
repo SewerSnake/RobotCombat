@@ -16,9 +16,9 @@ class CombatScene: SKScene {
     
     private var playerSprite: SKSpriteNode!
     
-    private var playerRobot: String!
-    
     private var enemySprite: SKSpriteNode!
+    
+    private var playerRobot: String!
     
     private let info: SKLabelNode = SKLabelNode()
     
@@ -36,6 +36,12 @@ class CombatScene: SKScene {
         makeUI()
     }
     
+    // Creates a GameObject for the
+    // player robot. A SKSprite represents
+    // it graphically. It also possesses a
+    // direction and a speed value. The
+    // GameObject also holds a Robot property,
+    // for storing its HP and ATK.
     func makePlayer() {
         let userDefaults: UserDefaults = UserDefaults.standard
         
@@ -52,9 +58,13 @@ class CombatScene: SKScene {
         player = GameObject(sprite: playerSprite, direction: 0.0, speed: 0.0, botName: playerRobot)
     }
     
+    // Creates a GameObject for a
+    // random enemy robot. It possesses
+    // the same properties as the player.
     func makeEnemy() {
         let robotName: String = PitStop.getRandomRobot()
-        let enemySprite = SKSpriteNode(imageNamed: robotName)
+        
+        enemySprite = SKSpriteNode(imageNamed: robotName)
         
         enemySprite.position = CGPoint(x: 0, y: self.size.height / 4)
         
