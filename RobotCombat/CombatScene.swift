@@ -144,6 +144,10 @@ class CombatScene: SKScene {
         
     }
     
+    // Action is only taken if the game hasn't ended.
+    // Registers which attack the user pressed.
+    // Randomly decides which robot that will attack
+    // first and starts battle.
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if gameOver == false {
@@ -179,14 +183,14 @@ class CombatScene: SKScene {
         print("Player attacks!")
         enemy.robot.takeDamage(combat.calcDamagePlayer(playerRobot, attackIndex))
         if checkBots() {
-            //player.robot.takeDamage(combat.calcDamageAI(enemy.robot.getName()))
+            player.robot.takeDamage(combat.calcDamageAI(enemy.robot.getName()))
         }
         checkBots()
     }
     
     func executeAttackEnemy() {
         print("Enemy attacks!")
-        //player.robot.takeDamage(combat.calcDamageAI(enemy.robot.getName()))
+        player.robot.takeDamage(combat.calcDamageAI(enemy.robot.getName()))
         if checkBots() {
             enemy.robot.takeDamage(combat.calcDamagePlayer(playerRobot, attackIndex))
         }
@@ -223,7 +227,9 @@ class CombatScene: SKScene {
             
             if beatenRobots != 3 {
                 player.robot.repair()
-                makeEnemy()
+                if gameOver == false {
+                    makeEnemy()
+                }
             } else {
                 gameOver = true
                 info.text = victory
