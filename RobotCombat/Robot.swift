@@ -12,12 +12,16 @@ class Robot {
     
     private var name: String
     private var hp: Int
+    private var baseHp: Int
     private var attack: Int
     
-    // Instantiates the three properties.
+    // Instantiates the four properties. baseHp
+    // allows the player robot to regain full
+    // HP after destroying an enemy robot.
     init(name: String, hp: Int, attack: Int) {
         self.name = name
         self.hp = hp
+        self.baseHp = hp
         self.attack = attack
     }
     
@@ -37,7 +41,7 @@ class Robot {
     // by the damage taken.
     // Ensures that it cannot
     // go below zero.
-    func takeDamage(damage: Int) {
+    func takeDamage(_ damage: Int) {
         self.hp -= damage
         
         if self.hp < 0 {
@@ -51,6 +55,12 @@ class Robot {
     // returned. Otherwise, false
     func isDestroyed() -> Bool {
         return self.hp == 0 ? true : false
+    }
+    
+    // Sets the robots current HP equal
+    // to its maximal value.
+    func repair() {
+        self.hp = self.baseHp
     }
     
 }

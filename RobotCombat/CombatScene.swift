@@ -12,6 +12,10 @@ import GameplayKit
 
 class CombatScene: SKScene {
     
+    private let victory: String = "You won!"
+    
+    private let defeat: String = "Game over..."
+    
     private var combat: Combat = Combat()
     
     private var playerSprite: SKSpriteNode!
@@ -21,6 +25,8 @@ class CombatScene: SKScene {
     private var playerRobot: String!
     
     private let info: SKLabelNode = SKLabelNode()
+    
+    private var attackIndex: Int!
     
     private var gameOver: Bool = false
     
@@ -141,7 +147,7 @@ class CombatScene: SKScene {
         if gameOver == false {
             
             let firstMove: UInt32 = arc4random_uniform(2)
-            var attackIndex: Int = 0
+            attackIndex = 0
             
             for touch in touches {
                 let location = touch.location(in: self)
@@ -160,19 +166,68 @@ class CombatScene: SKScene {
             }
             
             if firstMove == 0 {
-                executeAttackPlayer(attackIndex)
+                executeAttackPlayer()
             } else {
-                executeAttackEnemy(attackIndex)
+                executeAttackEnemy()
             }
         }
     }
     
-    func executeAttackPlayer(_ attackIndex: Int) {
+    func executeAttackPlayer() {
         print("Player attacks!")
+        enemy.robot.takeDamage(combat.calcDamagePlayer(playerRobot, attackIndex))
+        if checkBots() {
+            player.robot.takeDamage(combat.calcDamageAI(enemy.robot.getName()))
+        }
+        checkBots()
     }
     
-    func executeAttackEnemy(_ attackIndex: Int) {
+    func executeAttackEnemy() {
         print("Enemy attacks!")
+        player.robot.takeDamage(combat.calcDamageAI(enemy.robot.getName()))
+        if checkBots() {
+            enemy.robot.takeDamage(combat.calcDamagePlayer(playerRobot, attackIndex))
+        }
+        checkBots()
+    }
+    
+    // Checks the status of the robots.
+    // If the player's robot is destroyed,
+    // the battle ceases and the player
+    // is informed that he/she has lost the
+    // game.
+    // If the enemy robot is destroyed,
+    // the player's robot is repaired.
+    // A new enemy robot is then created.
+    // However, if five robots have been
+    // defeated, the player is declared
+    // to have won the game.
+    func checkBots() -> Bool {
+        var continueFighting: Bool = true
+        
+        if player.robot.isDestroyed() {
+            gameOver = true
+            info.text = defeat
+            print(defeat)
+            continueFighting = false
+        }
+        
+        if enemy.robot.isDestroyed() {
+            continueFighting = false
+            beatenRobots = beatenRobots + 1
+            player.robot.repair()
+            
+            if beatenRobots != 5 {
+                enemy.sprite.removeFromParent()
+                makeEnemy()
+            } else {
+                gameOver = true
+                info.text = victory
+                print(victory)
+            }
+        }
+        
+        return continueFighting
     }
     
 }
