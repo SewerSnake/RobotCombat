@@ -32,7 +32,7 @@ class PitStop {
     }
     
     // Retrieves the name of a random robot.
-    // Used for deciding the AI's robot.
+    // Used for deciding the enemy robot.
     static func getRandomRobot() -> String {
         
         let randomBot: Int = Int(arc4random_uniform(4)) + 1
@@ -49,6 +49,24 @@ class PitStop {
             return "Spectre"
         default:
             return "Sewer Snake"
+        }
+    }
+    
+    // Returns the attack names of the
+    // given robot.
+    static func getAttacksForRobot(_ theBot: String) -> [String] {
+        switch theBot {
+            
+        case "Sewer Snake":
+            return ["Flamethrower","Fork Rush","Denying Plow"]
+        case "Last Rites":
+            return ["Destructive Bar","Backhand","Spinning Doom"]
+        case "Original Sin":
+            return ["Absolute Wedge","Burnout","Box Rush"]
+        case "Spectre":
+            return ["Body Slam","Crunch","Haul"]
+        default:
+            return ["Flamethrower","Fork Rush","Denying Plow"]
         }
     }
     
