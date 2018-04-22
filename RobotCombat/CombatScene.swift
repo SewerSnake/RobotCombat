@@ -18,6 +18,8 @@ class CombatScene: SKScene {
     
     private var combat: Combat = Combat()
     
+    private var pitStop : PitStop = PitStop()
+    
     private var playerSprite: SKSpriteNode!
     
     private var enemySprite: SKSpriteNode!
@@ -68,7 +70,7 @@ class CombatScene: SKScene {
     // random enemy robot. It possesses
     // the same properties as the player.
     func makeEnemy() {
-        let robotName: String = PitStop.getRandomRobot()
+        let robotName: String = pitStop.getRandomRobot(playerRobot)
         
         enemySprite = SKSpriteNode(imageNamed: robotName)
         
@@ -104,7 +106,7 @@ class CombatScene: SKScene {
     }
     
     func makeUI() {
-        let attacks: [String] = PitStop.getAttacksForRobot(playerRobot)
+        let attacks: [String] = pitStop.getAttacksForRobot(playerRobot)
         
         info.color = UIColor.white
         info.fontSize = 26
@@ -177,14 +179,14 @@ class CombatScene: SKScene {
         print("Player attacks!")
         enemy.robot.takeDamage(combat.calcDamagePlayer(playerRobot, attackIndex))
         if checkBots() {
-            player.robot.takeDamage(combat.calcDamageAI(enemy.robot.getName()))
+            //player.robot.takeDamage(combat.calcDamageAI(enemy.robot.getName()))
         }
         checkBots()
     }
     
     func executeAttackEnemy() {
         print("Enemy attacks!")
-        player.robot.takeDamage(combat.calcDamageAI(enemy.robot.getName()))
+        //player.robot.takeDamage(combat.calcDamageAI(enemy.robot.getName()))
         if checkBots() {
             enemy.robot.takeDamage(combat.calcDamagePlayer(playerRobot, attackIndex))
         }
@@ -199,7 +201,7 @@ class CombatScene: SKScene {
     // If the enemy robot is destroyed,
     // the player's robot is repaired.
     // A new enemy robot is then created.
-    // However, if five robots have been
+    // However, if three robots have been
     // defeated, the player is declared
     // to have won the game.
     func checkBots() -> Bool {
@@ -217,7 +219,7 @@ class CombatScene: SKScene {
             beatenRobots = beatenRobots + 1
             player.robot.repair()
             
-            if beatenRobots != 5 {
+            if beatenRobots != 4 {
                 enemy.sprite.removeFromParent()
                 makeEnemy()
             } else {

@@ -22,6 +22,8 @@ class ChooseRobotViewController: UIViewController {
     
     @IBOutlet weak var nextButton: UIButton!
     
+    private var pitStop: PitStop = PitStop()
+    
     private var robots: [String]!
     
     private var currentIndex: Int!
@@ -84,7 +86,7 @@ class ChooseRobotViewController: UIViewController {
     // match the current robot's
     // name, HP and ATK.
     func getStats() {
-        let robot = PitStop.getRobot(self.robots[currentIndex])
+        let robot = pitStop.getRobot(self.robots[currentIndex])
         
         robotName.text = robot.getName()
         

@@ -16,19 +16,21 @@ class GameObject {
     var speed: Float
     var robot: Robot
     
+    private var pitStop: PitStop = PitStop()
+    
     
     init(sprite: SKSpriteNode, botName: String) {
         self.sprite = sprite
         direction = 0.0
         speed = 0.0
-        robot = PitStop.getRobot(botName)
+        robot = pitStop.getRobot(botName)
     }
     
     init(sprite: SKSpriteNode, direction: Float, speed: Float, botName: String) {
         self.sprite = sprite
         self.direction = direction
         self.speed = speed
-        robot = PitStop.getRobot(botName)
+        robot = pitStop.getRobot(botName)
     }
     
     func tick(dt: Float) {

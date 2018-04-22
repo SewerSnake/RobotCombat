@@ -10,11 +10,15 @@ import Foundation
 
 class PitStop {
     
+    private var robots: [String] = ["Sewer Snake","Last Rites","Original Sin","Spectre"]
+    
+    private var battleLog: [Bool] = [false, false, false, false]
+    
     // Retrieves an object of class Robot
     // for the given robot name. The robot
     // "Sewer Snake" is returned as a default
     // value.
-    static func getRobot(_ theBot: String) -> Robot {
+    func getRobot(_ theBot: String) -> Robot {
         
         switch theBot {
             
@@ -33,19 +37,26 @@ class PitStop {
     
     // Retrieves the name of a random robot.
     // Used for deciding the enemy robot.
-    static func getRandomRobot() -> String {
+    // Ensures that the enemy doesn't have
+    // the same robot as the player.
+    func getRandomRobot(_ robotName: String) -> String {
+        var randomBotIndex: Int
         
-        let randomBot: Int = Int(arc4random_uniform(4)) + 1
+        repeat {
+            randomBotIndex = Int(arc4random_uniform(4))
+        } while robots[randomBotIndex] == robotName || battleLog[randomBotIndex] == true
         
-        switch randomBot {
+        battleLog[randomBotIndex] = true
+        
+        switch randomBotIndex {
             
-        case 1:
+        case 0:
             return "Sewer Snake"
-        case 2:
+        case 1:
             return "Last Rites"
-        case 3:
+        case 2:
             return "Original Sin"
-        case 4:
+        case 3:
             return "Spectre"
         default:
             return "Sewer Snake"
@@ -54,7 +65,7 @@ class PitStop {
     
     // Returns the attack names of the
     // given robot.
-    static func getAttacksForRobot(_ theBot: String) -> [String] {
+    func getAttacksForRobot(_ theBot: String) -> [String] {
         switch theBot {
             
         case "Sewer Snake":
