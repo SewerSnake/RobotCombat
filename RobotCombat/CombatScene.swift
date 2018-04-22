@@ -216,17 +216,20 @@ class CombatScene: SKScene {
         
         if enemy.robot.isDestroyed() {
             continueFighting = false
-            beatenRobots = beatenRobots + 1
-            player.robot.repair()
             
-            if beatenRobots != 4 {
-                enemy.sprite.removeFromParent()
+            beatenRobots = beatenRobots + 1
+            
+            enemy.sprite.removeFromParent()
+            
+            if beatenRobots != 3 {
+                player.robot.repair()
                 makeEnemy()
             } else {
                 gameOver = true
                 info.text = victory
                 print(victory)
             }
+            
         }
         
         return continueFighting
