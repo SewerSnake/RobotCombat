@@ -22,6 +22,8 @@ class CombatScene: SKScene {
     
     private let info: SKLabelNode = SKLabelNode()
     
+    private var gameOver: Bool = false
+    
     //private var player: GameObject!
     
     //private var enemy: GameObject!
@@ -80,6 +82,7 @@ class CombatScene: SKScene {
     }
     
     func makeUI() {
+        let attacks: [String] = PitStop.getAttacksForRobot(playerRobot)
         
         info.color = UIColor.white
         info.fontSize = 26
@@ -93,7 +96,7 @@ class CombatScene: SKScene {
         attackOne.fontSize = 30
         attackOne.fontName = "American Typewriter"
         attackOne.position = CGPoint(x: -self.size.width / 3, y: -self.size.height / 2.4)
-        attackOne.text = "ATTACK 1"
+        attackOne.text = attacks[0]
         attackOne.name = "attackOne"
         addChild(attackOne)
         
@@ -102,7 +105,7 @@ class CombatScene: SKScene {
         attackTwo.fontSize = 30
         attackTwo.fontName = "American Typewriter"
         attackTwo.position = CGPoint(x: 0, y: -self.size.height / 2.4)
-        attackTwo.text = "ATTACK 2"
+        attackTwo.text = attacks[1]
         attackTwo.name = "attackTwo"
         addChild(attackTwo)
         
@@ -111,7 +114,7 @@ class CombatScene: SKScene {
         attackThree.fontSize = 30
         attackThree.fontName = "American Typewriter"
         attackThree.position = CGPoint(x: self.size.width / 3, y: -self.size.height / 2.4)
-        attackThree.text = "ATTACK 3"
+        attackThree.text = attacks[2]
         attackThree.name = "attackThree"
         addChild(attackThree)
         
@@ -119,29 +122,32 @@ class CombatScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        let firstMove: UInt32 = arc4random_uniform(2)
-        var attackIndex: Int = 0
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            let node = atPoint(location)
+        if gameOver == false {
             
-            if node.name == "attackOne" {
-                info.text = "1"
-                attackIndex = 1
-            } else if node.name == "attackTwo" {
-                info.text = "2"
-                attackIndex = 2
-            } else if node.name == "attackThree" {
-                info.text = "3"
-                attackIndex = 3
+            let firstMove: UInt32 = arc4random_uniform(2)
+            var attackIndex: Int = 0
+            
+            for touch in touches {
+                let location = touch.location(in: self)
+                let node = atPoint(location)
+                
+                if node.name == "attackOne" {
+                    info.text = "1"
+                    attackIndex = 1
+                } else if node.name == "attackTwo" {
+                    info.text = "2"
+                    attackIndex = 2
+                } else if node.name == "attackThree" {
+                    info.text = "3"
+                    attackIndex = 3
+                }
             }
-        }
-        
-        if firstMove == 0 {
-            executeAttackPlayer(attackIndex)
-        } else {
-            executeAttackEnemy(attackIndex)
+            
+            if firstMove == 0 {
+                executeAttackPlayer(attackIndex)
+            } else {
+                executeAttackEnemy(attackIndex)
+            }
         }
     }
     
