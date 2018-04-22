@@ -14,23 +14,23 @@ class GameObject {
     let sprite: SKSpriteNode
     var direction: Float
     var speed: Float
-    var alive: Bool = true
+    var robot: Robot
     
     
-    init(sprite: SKSpriteNode) {
+    init(sprite: SKSpriteNode, botName: String) {
         self.sprite = sprite
         direction = 0.0
         speed = 0.0
+        robot = PitStop.getRobot(botName)
     }
     
-    init(sprite: SKSpriteNode, direction: Float, speed: Float) {
+    init(sprite: SKSpriteNode, direction: Float, speed: Float, botName: String) {
         self.sprite = sprite
         self.direction = direction
         self.speed = speed
+        robot = PitStop.getRobot(botName)
     }
     
-    // dt låter oss förflytta hur mycket vi vill, även om
-    // telefonen är väldigt långsam/snabb
     func tick(dt: Float) {
         let pos = sprite.position
         

@@ -24,17 +24,19 @@ class CombatScene: SKScene {
     
     private var gameOver: Bool = false
     
-    //private var player: GameObject!
+    private var beatenRobots: Int = 0
     
-    //private var enemy: GameObject!
+    private var player: GameObject!
+    
+    private var enemy: GameObject!
     
     override func didMove(to view: SKView) {
-        makePlayerSprite()
-        makeEnemySprite()
+        makePlayer()
+        makeEnemy()
         makeUI()
     }
     
-    func makePlayerSprite() {
+    func makePlayer() {
         let userDefaults: UserDefaults = UserDefaults.standard
         
         playerRobot = userDefaults.string(forKey: "playerRobot")!
@@ -46,9 +48,11 @@ class CombatScene: SKScene {
         scaleImage(playerSprite, playerRobot)
         
         addChild(playerSprite)
+        
+        player = GameObject(sprite: playerSprite, direction: 0.0, speed: 0.0, botName: playerRobot)
     }
     
-    func makeEnemySprite() {
+    func makeEnemy() {
         let robotName: String = PitStop.getRandomRobot()
         let enemySprite = SKSpriteNode(imageNamed: robotName)
         
@@ -57,6 +61,8 @@ class CombatScene: SKScene {
         scaleImage(enemySprite, robotName)
         
         addChild(enemySprite)
+        
+        enemy = GameObject(sprite: enemySprite, direction: 0.0, speed: 0.0, botName: robotName)
     }
     
     // Scales the image so that it fits
