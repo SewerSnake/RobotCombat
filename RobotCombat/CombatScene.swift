@@ -39,7 +39,7 @@ class CombatScene: SKScene {
         
         playerSprite = SKSpriteNode(imageNamed: playerRobot)
         
-        playerSprite.position = CGPoint(x: 0, y: -self.size.height / 3)
+        playerSprite.position = CGPoint(x: 0, y: -self.size.height / 4)
         
         scaleImage(playerSprite, playerRobot)
         
@@ -50,7 +50,7 @@ class CombatScene: SKScene {
         let robotName: String = PitStop.getRandomRobot()
         let enemySprite = SKSpriteNode(imageNamed: robotName)
         
-        enemySprite.position = CGPoint(x: 0, y: self.size.height / 3)
+        enemySprite.position = CGPoint(x: 0, y: self.size.height / 4)
         
         scaleImage(enemySprite, robotName)
         
@@ -82,55 +82,75 @@ class CombatScene: SKScene {
     func makeUI() {
         
         info.color = UIColor.white
-        info.fontSize = 28
+        info.fontSize = 26
         info.fontName = "American Typewriter"
-        info.position = CGPoint(x: 0, y: -self.size.height / 2)
-        info.text = "TEST"
+        info.position = CGPoint(x: 0, y: -self.size.height / 2.1)
+        info.text = "Sewer Snake used Fork Rush! Original Sin took 49 damage."
         addChild(info)
         
         let attackOne: SKLabelNode = SKLabelNode()
-        info.color = UIColor.white
-        info.fontSize = 30
-        info.fontName = "American Typewriter"
-        info.position = CGPoint(x: -self.size.width / 3, y: -self.size.height / 3)
-        info.text = "ATTACK 1"
+        attackOne.color = UIColor.white
+        attackOne.fontSize = 30
+        attackOne.fontName = "American Typewriter"
+        attackOne.position = CGPoint(x: -self.size.width / 3, y: -self.size.height / 2.4)
+        attackOne.text = "ATTACK 1"
         attackOne.name = "attackOne"
         addChild(attackOne)
         
+        let attackTwo: SKLabelNode = SKLabelNode()
+        attackTwo.color = UIColor.white
+        attackTwo.fontSize = 30
+        attackTwo.fontName = "American Typewriter"
+        attackTwo.position = CGPoint(x: 0, y: -self.size.height / 2.4)
+        attackTwo.text = "ATTACK 2"
+        attackTwo.name = "attackTwo"
+        addChild(attackTwo)
+        
         let attackThree: SKLabelNode = SKLabelNode()
-        info.color = UIColor.white
-        info.fontSize = 30
-        info.fontName = "American Typewriter"
-        info.position = CGPoint(x: self.size.width / 3, y: -self.size.height / 3)
-        info.text = "ATTACK 3"
-        attackOne.name = "attackThree"
+        attackThree.color = UIColor.white
+        attackThree.fontSize = 30
+        attackThree.fontName = "American Typewriter"
+        attackThree.position = CGPoint(x: self.size.width / 3, y: -self.size.height / 2.4)
+        attackThree.text = "ATTACK 3"
+        attackThree.name = "attackThree"
         addChild(attackThree)
-        //var attackTwo: SKLabelNode
-        //var attackThree: SKLabelNode
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //print("TOUCH!")
+        
+        let firstMove: UInt32 = arc4random_uniform(2)
+        var attackIndex: Int = 0
         
         for touch in touches {
             let location = touch.location(in: self)
             let node = atPoint(location)
             
             if node.name == "attackOne" {
-                executeAttackPlayer(1)
                 info.text = "1"
+                attackIndex = 1
             } else if node.name == "attackTwo" {
-                executeAttackPlayer(2)
                 info.text = "2"
+                attackIndex = 2
             } else if node.name == "attackThree" {
-                executeAttackPlayer(3)
                 info.text = "3"
+                attackIndex = 3
             }
+        }
+        
+        if firstMove == 0 {
+            executeAttackPlayer(attackIndex)
+        } else {
+            executeAttackEnemy(attackIndex)
         }
     }
     
     func executeAttackPlayer(_ attackIndex: Int) {
-        
+        print("Player attacks!")
+    }
+    
+    func executeAttackEnemy(_ attackIndex: Int) {
+        print("Enemy attacks!")
     }
     
 }
