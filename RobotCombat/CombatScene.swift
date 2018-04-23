@@ -28,6 +28,12 @@ class CombatScene: SKScene {
     
     private let info: SKLabelNode = SKLabelNode()
     
+    private let attackOne: SKLabelNode = SKLabelNode()
+    
+    private let attackTwo: SKLabelNode = SKLabelNode()
+    
+    private let attackThree: SKLabelNode = SKLabelNode()
+    
     private var attackIndex: Int!
     
     private var gameOver: Bool = false
@@ -112,11 +118,10 @@ class CombatScene: SKScene {
         info.fontSize = 26
         info.fontName = "American Typewriter"
         info.position = CGPoint(x: 0, y: -self.size.height / 2.1)
-        info.text = "Sewer Snake used Fork Rush! Original Sin took 49 damage."
+        info.text = ""
         addChild(info)
         
-        let attackOne: SKLabelNode = SKLabelNode()
-        attackOne.color = UIColor.white
+        attackOne.color = UIColor.green
         attackOne.fontSize = 30
         attackOne.fontName = "American Typewriter"
         attackOne.position = CGPoint(x: -self.size.width / 3, y: -self.size.height / 2.4)
@@ -124,8 +129,7 @@ class CombatScene: SKScene {
         attackOne.name = "attackOne"
         addChild(attackOne)
         
-        let attackTwo: SKLabelNode = SKLabelNode()
-        attackTwo.color = UIColor.white
+        attackTwo.color = UIColor.green
         attackTwo.fontSize = 30
         attackTwo.fontName = "American Typewriter"
         attackTwo.position = CGPoint(x: 0, y: -self.size.height / 2.4)
@@ -133,8 +137,7 @@ class CombatScene: SKScene {
         attackTwo.name = "attackTwo"
         addChild(attackTwo)
         
-        let attackThree: SKLabelNode = SKLabelNode()
-        attackThree.color = UIColor.white
+        attackThree.color = UIColor.green
         attackThree.fontSize = 30
         attackThree.fontName = "American Typewriter"
         attackThree.position = CGPoint(x: self.size.width / 3, y: -self.size.height / 2.4)
@@ -160,39 +163,52 @@ class CombatScene: SKScene {
                 let node = atPoint(location)
                 
                 if node.name == "attackOne" {
-                    info.text = "1"
+                    //info.text = "1"
                     attackIndex = 1
                 } else if node.name == "attackTwo" {
-                    info.text = "2"
+                    //info.text = "2"
                     attackIndex = 2
                 } else if node.name == "attackThree" {
-                    info.text = "3"
+                    //info.text = "3"
                     attackIndex = 3
                 }
             }
             
-            if firstMove == 0 {
-                executeAttackPlayer()
-            } else {
-                executeAttackEnemy()
+            if attackIndex > 0 {
+                if firstMove == 0 {
+                    executeAttackPlayer()
+                } else {
+                    executeAttackEnemy()
+                }
             }
         }
     }
     
     func executeAttackPlayer() {
         print("Player attacks!")
-        enemy.robot.takeDamage(combat.calcDamagePlayer(playerRobot, attackIndex))
+        var damage: Int = combat.calcDamagePlayer(playerRobot, attackIndex)
+        
+        enemy.robot.takeDamage(damage)
+        
+        info.text = "\(player.robot.getName()) " + "used \(pitStop.getAttacksForRobot(playerRobot)[attackIndex - 1])!" + " \(enemy.robot.getName()) took \(damage) damage."
+        
         if checkBots() {
-            player.robot.takeDamage(combat.calcDamageAI(enemy.robot.getName()))
+            damage = combat.calcDamageAI(enemy.robot.getName())
+            player.robot.takeDamage(damage)
         }
+        
         checkBots()
     }
     
     func executeAttackEnemy() {
         print("Enemy attacks!")
-        player.robot.takeDamage(combat.calcDamageAI(enemy.robot.getName()))
+        var damage: Int = combat.calcDamageAI(enemy.robot.getName())
+        
+        player.robot.takeDamage(damage)
+        
         if checkBots() {
-            enemy.robot.takeDamage(combat.calcDamagePlayer(playerRobot, attackIndex))
+            damage = combat.calcDamagePlayer(playerRobot, attackIndex)
+            enemy.robot.takeDamage(damage)
         }
         checkBots()
     }
@@ -213,6 +229,7 @@ class CombatScene: SKScene {
         
         if player.robot.isDestroyed() {
             gameOver = true
+            disableAttacks()
             info.text = defeat
             print(defeat)
             continueFighting = false
@@ -232,6 +249,7 @@ class CombatScene: SKScene {
                 }
             } else {
                 gameOver = true
+                disableAttacks()
                 info.text = victory
                 print(victory)
             }
@@ -239,6 +257,15 @@ class CombatScene: SKScene {
         }
         
         return continueFighting
+    }
+    
+    // Changes the colors of the attack
+    // "buttons" to red, to indicate
+    // that the user shouldn't press them.
+    func disableAttacks() {
+        attackOne.color = UIColor.red
+        attackTwo.color = UIColor.red
+        attackThree.color = UIColor.red
     }
     
 }
