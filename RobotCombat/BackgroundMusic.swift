@@ -28,6 +28,8 @@ class BackgroundMusic {
             
             audioPlayer!.numberOfLoops = -1
             
+            audioPlayer!.volume = 0.2
+            
             audioPlayer!.prepareToPlay()
             
             audioPlayer!.play()
