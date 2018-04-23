@@ -12,7 +12,13 @@ class PitStop {
     
     private var robots: [String] = ["Sewer Snake","Last Rites","Original Sin","Spectre"]
     
-    private var battleLog: [Bool] = [false, false, false, false]
+    private var battleLog: [Bool]!
+    
+    // A "battle log" is used to keep track
+    // of robots that have fought.
+    init() {
+        battleLog = [Bool].init(repeating: false, count: robots.count)
+    }
     
     // Retrieves an object of class Robot
     // for the given robot name. The robot
