@@ -68,7 +68,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="abb-wG-CTZ">
                                 <rect key="frame" x="16" y="72" width="343" height="579"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">This is a robot combat game., based on the TV shows "Battlebots", "King of Bots" and "Robot Wars". Also features robots from the American event "RoboGames". Choose a robot and beat all of your opponents! Each robot has Hit Points (HP) and an attack value. Three attacks are available to a robot. Simply touch an attack name to do battle!</string>
+                                <string key="text">This is a robot combat game, based on the TV shows "Battlebots", "King of Bots" and "Robot Wars". Also features robots from the American event "RoboGames". Choose a robot and beat all of your opponents! Each robot has Hit Points (HP) and an attack value. Three attacks are available to a robot. Simply touch an attack name to do battle!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>

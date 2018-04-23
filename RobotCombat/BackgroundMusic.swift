@@ -13,9 +13,9 @@ class BackgroundMusic {
     
     private let audioFile: String = "intro"
     
-    static let sharedHelper = BackgroundMusic()
+    private var audioPlayer: AVAudioPlayer?
     
-    var audioPlayer: AVAudioPlayer?
+    static let sharedHelper = BackgroundMusic()
     
     // Plays the mp3 file indefinately.
     func playBackgroundMusic() {
