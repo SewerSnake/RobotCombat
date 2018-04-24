@@ -20,6 +20,8 @@ class CombatScene: SKScene {
     
     private var pitStop : PitStop = PitStop()
     
+    private let worldNode: SKNode = SKNode()
+    
     private var playerSprite: SKSpriteNode!
     
     private var enemySprite: SKSpriteNode!
@@ -112,6 +114,8 @@ class CombatScene: SKScene {
     }
     
     func makeUI() {
+        addChild(worldNode)
+        
         let attacks: [String] = pitStop.getAttacksForRobot(playerRobot)
         
         info.color = UIColor.white
@@ -119,7 +123,7 @@ class CombatScene: SKScene {
         info.fontName = "American Typewriter"
         info.position = CGPoint(x: 0, y: -self.size.height / 2.1)
         info.text = ""
-        addChild(info)
+        worldNode.addChild(info)
         
         attackOne.color = UIColor.green
         attackOne.fontSize = 30
@@ -190,11 +194,15 @@ class CombatScene: SKScene {
         
         enemy.robot.takeDamage(damage)
         
-        info.text = "\(player.robot.getName()) " + "used \(pitStop.getAttacksForRobot(playerRobot)[attackIndex - 1])!" + " \(enemy.robot.getName()) took \(damage) damage."
+        info.text = "\(enemy.robot.getName()) took \(damage) damage."
+        pauseGame()
         
         if checkBots() {
             damage = combat.calcDamageAI(enemy.robot.getName())
             player.robot.takeDamage(damage)
+            
+            info.text = "\(player.robot.getName()) took \(damage) damage."
+            pauseGame()
         }
         
         checkBots()
@@ -206,9 +214,14 @@ class CombatScene: SKScene {
         
         player.robot.takeDamage(damage)
         
+        info.text = "\(player.robot.getName()) took \(damage) damage."
+        pauseGame()
+        
         if checkBots() {
             damage = combat.calcDamagePlayer(playerRobot, attackIndex)
             enemy.robot.takeDamage(damage)
+            info.text = "\(enemy.robot.getName()) took \(damage) damage."
+            pauseGame()
         }
         checkBots()
     }
@@ -232,6 +245,7 @@ class CombatScene: SKScene {
             disableAttacks()
             info.text = defeat
             print(defeat)
+            pauseGame()
             continueFighting = false
         }
         
@@ -251,12 +265,28 @@ class CombatScene: SKScene {
                 gameOver = true
                 disableAttacks()
                 info.text = victory
+                pauseGame()
                 print(victory)
             }
             
         }
         
         return continueFighting
+    }
+    
+    func pauseGame() {
+        
+        let pause = SKAction.run {
+            self.worldNode.isPaused = true
+            self.physicsWorld.speed = 0
+        }
+        
+        let wait = SKAction.wait(forDuration: 0.5)
+        
+        run(SKAction.sequence([pause, wait]))
+        
+        worldNode.isPaused = false
+        physicsWorld.speed = 1
     }
     
     // Changes the colors of the attack
