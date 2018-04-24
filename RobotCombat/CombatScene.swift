@@ -194,15 +194,15 @@ class CombatScene: SKScene {
         
         enemy.robot.takeDamage(damage)
         
+        pauseGame(2.0)
         info.text = "\(enemy.robot.getName()) took \(damage) damage."
-        pauseGame()
         
         if checkBots() {
             damage = combat.calcDamageAI(enemy.robot.getName())
             player.robot.takeDamage(damage)
             
+            pauseGame(2.0)
             info.text = "\(player.robot.getName()) took \(damage) damage."
-            pauseGame()
         }
         
         checkBots()
@@ -214,14 +214,15 @@ class CombatScene: SKScene {
         
         player.robot.takeDamage(damage)
         
+        pauseGame(2.0)
         info.text = "\(player.robot.getName()) took \(damage) damage."
-        pauseGame()
         
         if checkBots() {
             damage = combat.calcDamagePlayer(playerRobot, attackIndex)
             enemy.robot.takeDamage(damage)
+            pauseGame(2.0)
             info.text = "\(enemy.robot.getName()) took \(damage) damage."
-            pauseGame()
+            
         }
         checkBots()
     }
@@ -243,9 +244,9 @@ class CombatScene: SKScene {
         if player.robot.isDestroyed() {
             gameOver = true
             disableAttacks()
+            pauseGame(2.0)
             info.text = defeat
             print(defeat)
-            pauseGame()
             continueFighting = false
         }
         
@@ -264,8 +265,8 @@ class CombatScene: SKScene {
             } else {
                 gameOver = true
                 disableAttacks()
+                pauseGame(2.0)
                 info.text = victory
-                pauseGame()
                 print(victory)
             }
             
@@ -274,14 +275,14 @@ class CombatScene: SKScene {
         return continueFighting
     }
     
-    func pauseGame() {
+    func pauseGame(_ duration: TimeInterval) {
         
         let pause = SKAction.run {
             self.worldNode.isPaused = true
             self.physicsWorld.speed = 0
         }
         
-        let wait = SKAction.wait(forDuration: 0.5)
+        let wait = SKAction.wait(forDuration: duration)
         
         run(SKAction.sequence([pause, wait]))
         
