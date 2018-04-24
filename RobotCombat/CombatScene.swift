@@ -188,19 +188,31 @@ class CombatScene: SKScene {
         }
     }
     
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
+    
     func executeAttackPlayer() {
         print("Player attacks!")
         var damage: Int = combat.calcDamagePlayer(playerRobot, attackIndex)
         
         enemy.robot.takeDamage(damage)
-        
+        attackAnimation(true)
         pauseGame(2.0)
         info.text = "\(enemy.robot.getName()) took \(damage) damage."
         
         if checkBots() {
             damage = combat.calcDamageAI(enemy.robot.getName())
             player.robot.takeDamage(damage)
-            
+            attackAnimation(false)
             pauseGame(2.0)
             info.text = "\(player.robot.getName()) took \(damage) damage."
         }
@@ -213,13 +225,14 @@ class CombatScene: SKScene {
         var damage: Int = combat.calcDamageAI(enemy.robot.getName())
         
         player.robot.takeDamage(damage)
-        
+        attackAnimation(false)
         pauseGame(2.0)
         info.text = "\(player.robot.getName()) took \(damage) damage."
         
         if checkBots() {
             damage = combat.calcDamagePlayer(playerRobot, attackIndex)
             enemy.robot.takeDamage(damage)
+            attackAnimation(true)
             pauseGame(2.0)
             info.text = "\(enemy.robot.getName()) took \(damage) damage."
             
@@ -275,6 +288,8 @@ class CombatScene: SKScene {
         return continueFighting
     }
     
+    // Pauses the game for the specified
+    // TimeInterval.
     func pauseGame(_ duration: TimeInterval) {
         
         let pause = SKAction.run {
@@ -297,6 +312,25 @@ class CombatScene: SKScene {
         attackOne.color = UIColor.red
         attackTwo.color = UIColor.red
         attackThree.color = UIColor.red
+    }
+    
+    func attackAnimation(_ playerTurn: Bool) {
+        if playerTurn {
+            let orignalPos = player.sprite.position
+            
+            let actionOne = SKAction.run {
+                SKAction.move(to: self.enemy.sprite.position, duration: 2)
+            }
+            
+            let actionTwo = SKAction.run {
+                 SKAction.move(to: orignalPos, duration: 2)
+            }
+            
+            self.player.sprite.run(SKAction.sequence([actionOne,actionTwo]))
+        } else {
+            enemy.direction = -Float.pi / 2
+            enemy.speed = 100
+        }
     }
     
 }
