@@ -167,13 +167,10 @@ class CombatScene: SKScene {
                 let node = atPoint(location)
                 
                 if node.name == "attackOne" {
-                    //info.text = "1"
                     attackIndex = 1
                 } else if node.name == "attackTwo" {
-                    //info.text = "2"
                     attackIndex = 2
                 } else if node.name == "attackThree" {
-                    //info.text = "3"
                     attackIndex = 3
                 }
             }
@@ -207,6 +204,7 @@ class CombatScene: SKScene {
         enemy.robot.takeDamage(damage)
         attackAnimation(true)
         pauseGame(2.0)
+        updateFocusIfNeeded()
         info.text = "\(enemy.robot.getName()) took \(damage) damage."
         
         if checkBots() {
@@ -214,6 +212,7 @@ class CombatScene: SKScene {
             player.robot.takeDamage(damage)
             attackAnimation(false)
             pauseGame(2.0)
+            updateFocusIfNeeded()
             info.text = "\(player.robot.getName()) took \(damage) damage."
         }
         
@@ -227,6 +226,7 @@ class CombatScene: SKScene {
         player.robot.takeDamage(damage)
         attackAnimation(false)
         pauseGame(2.0)
+        updateFocusIfNeeded()
         info.text = "\(player.robot.getName()) took \(damage) damage."
         
         if checkBots() {
@@ -234,6 +234,7 @@ class CombatScene: SKScene {
             enemy.robot.takeDamage(damage)
             attackAnimation(true)
             pauseGame(2.0)
+            updateFocusIfNeeded()
             info.text = "\(enemy.robot.getName()) took \(damage) damage."
             
         }
@@ -256,8 +257,10 @@ class CombatScene: SKScene {
         
         if player.robot.isDestroyed() {
             gameOver = true
+            player.sprite.removeFromParent()
             disableAttacks()
             pauseGame(2.0)
+            updateFocusIfNeeded()
             info.text = defeat
             print(defeat)
             continueFighting = false
@@ -279,6 +282,7 @@ class CombatScene: SKScene {
                 gameOver = true
                 disableAttacks()
                 pauseGame(2.0)
+                updateFocusIfNeeded()
                 info.text = victory
                 print(victory)
             }
@@ -289,7 +293,7 @@ class CombatScene: SKScene {
     }
     
     // Pauses the game for the specified
-    // TimeInterval.
+    // TimeInterval. The unit is seconds.
     func pauseGame(_ duration: TimeInterval) {
         
         let pause = SKAction.run {
@@ -328,8 +332,17 @@ class CombatScene: SKScene {
             
             self.player.sprite.run(SKAction.sequence([actionOne,actionTwo]))
         } else {
-            enemy.direction = -Float.pi / 2
-            enemy.speed = 100
+            let orignalPos = enemy.sprite.position
+            
+            let actionOne = SKAction.run {
+                SKAction.move(to: self.player.sprite.position, duration: 2)
+            }
+            
+            let actionTwo = SKAction.run {
+                SKAction.move(to: orignalPos, duration: 2)
+            }
+            
+            self.enemy.sprite.run(SKAction.sequence([actionOne,actionTwo]))
         }
     }
     
