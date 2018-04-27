@@ -114,8 +114,6 @@ class CombatScene: SKScene {
     }
     
     func makeUI() {
-        addChild(worldNode)
-        
         let attacks: [String] = pitStop.getAttacksForRobot(playerRobot)
         
         info.color = UIColor.white
@@ -124,6 +122,7 @@ class CombatScene: SKScene {
         info.position = CGPoint(x: 0, y: -self.size.height / 2.1)
         info.text = ""
         worldNode.addChild(info)
+        addChild(worldNode)
         
         attackOne.color = UIColor.green
         attackOne.fontSize = 30
@@ -148,7 +147,6 @@ class CombatScene: SKScene {
         attackThree.text = attacks[2]
         attackThree.name = "attackThree"
         addChild(attackThree)
-        
     }
     
     // Action is only taken if the game hasn't ended.
@@ -203,17 +201,15 @@ class CombatScene: SKScene {
         
         enemy.robot.takeDamage(damage)
         attackAnimation(true)
-        info.text = "\(enemy.robot.getName()) took \(damage) damage."
         pauseGame(2.0)
-        updateFocusIfNeeded()
+        info.text = "\(enemy.robot.getName()) took \(damage) damage."
         
         if checkBots() {
             damage = combat.calcDamageAI(enemy.robot.getName())
             player.robot.takeDamage(damage)
             attackAnimation(false)
-            info.text = "\(player.robot.getName()) took \(damage) damage."
             pauseGame(2.0)
-            updateFocusIfNeeded()
+            info.text = "\(player.robot.getName()) took \(damage) damage."
         }
         
         checkBots()
@@ -225,18 +221,15 @@ class CombatScene: SKScene {
         
         player.robot.takeDamage(damage)
         attackAnimation(false)
-        info.text = "\(player.robot.getName()) took \(damage) damage."
         pauseGame(2.0)
-        updateFocusIfNeeded()
+        info.text = "\(player.robot.getName()) took \(damage) damage."
         
         if checkBots() {
             damage = combat.calcDamagePlayer(playerRobot, attackIndex)
             enemy.robot.takeDamage(damage)
             attackAnimation(true)
-            info.text = "\(enemy.robot.getName()) took \(damage) damage."
             pauseGame(2.0)
-            updateFocusIfNeeded()
-            
+            info.text = "\(enemy.robot.getName()) took \(damage) damage."
         }
         checkBots()
     }
@@ -259,9 +252,8 @@ class CombatScene: SKScene {
             gameOver = true
             player.sprite.removeFromParent()
             disableAttacks()
-            info.text = defeat
             pauseGame(2.0)
-            updateFocusIfNeeded()
+            info.text = defeat
             print(defeat)
             continueFighting = false
         }
@@ -281,9 +273,8 @@ class CombatScene: SKScene {
             } else {
                 gameOver = true
                 disableAttacks()
-                info.text = victory
                 pauseGame(2.0)
-                updateFocusIfNeeded()
+                info.text = victory
                 print(victory)
             }
         }
@@ -320,27 +311,17 @@ class CombatScene: SKScene {
         if playerTurn {
             let orignalPos = player.sprite.position
             
-            let actionOne = SKAction.run {
-                SKAction.move(to: self.enemy.sprite.position, duration: 2)
-            }
-            
-            let actionTwo = SKAction.run {
-                 SKAction.move(to: orignalPos, duration: 2)
-            }
-            
-            self.player.sprite.run(SKAction.sequence([actionOne,actionTwo]))
+            self.player.sprite.run(
+                SKAction.sequence([SKAction.move(to: self.enemy.sprite.position, duration: 2),
+                                   SKAction.wait(forDuration: 3),
+                                   SKAction.move(to: orignalPos, duration: 2)]))
         } else {
             let orignalPos = enemy.sprite.position
             
-            let actionOne = SKAction.run {
-                SKAction.move(to: self.player.sprite.position, duration: 2)
-            }
-            
-            let actionTwo = SKAction.run {
-                SKAction.move(to: orignalPos, duration: 2)
-            }
-            
-            self.enemy.sprite.run(SKAction.sequence([actionOne,actionTwo]))
+            self.enemy.sprite.run(
+                SKAction.sequence([SKAction.move(to: self.player.sprite.position, duration: 2),
+                                   SKAction.wait(forDuration: 3),
+                                   SKAction.move(to: orignalPos, duration: 2)]))
         }
     }
     
