@@ -18,7 +18,6 @@ class GameObject {
     
     private var pitStop: PitStop = PitStop()
     
-    
     init(sprite: SKSpriteNode, botName: String) {
         self.sprite = sprite
         direction = 0.0
@@ -26,6 +25,11 @@ class GameObject {
         robot = pitStop.getRobot(botName)
     }
     
+    // A GameObject has a property which
+    // contains a Robot, retrieved from
+    // an object of class PitStop. The
+    // speed and direction are set to the
+    // given values.
     init(sprite: SKSpriteNode, direction: Float, speed: Float, botName: String) {
         self.sprite = sprite
         self.direction = direction
@@ -33,6 +37,8 @@ class GameObject {
         robot = pitStop.getRobot(botName)
     }
     
+    // Calculates the new position based on the
+    // current speed and direction.
     func tick(dt: Float) {
         let pos = sprite.position
         

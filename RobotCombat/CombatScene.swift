@@ -203,17 +203,17 @@ class CombatScene: SKScene {
         
         enemy.robot.takeDamage(damage)
         attackAnimation(true)
+        info.text = "\(enemy.robot.getName()) took \(damage) damage."
         pauseGame(2.0)
         updateFocusIfNeeded()
-        info.text = "\(enemy.robot.getName()) took \(damage) damage."
         
         if checkBots() {
             damage = combat.calcDamageAI(enemy.robot.getName())
             player.robot.takeDamage(damage)
             attackAnimation(false)
+            info.text = "\(player.robot.getName()) took \(damage) damage."
             pauseGame(2.0)
             updateFocusIfNeeded()
-            info.text = "\(player.robot.getName()) took \(damage) damage."
         }
         
         checkBots()
@@ -225,17 +225,17 @@ class CombatScene: SKScene {
         
         player.robot.takeDamage(damage)
         attackAnimation(false)
+        info.text = "\(player.robot.getName()) took \(damage) damage."
         pauseGame(2.0)
         updateFocusIfNeeded()
-        info.text = "\(player.robot.getName()) took \(damage) damage."
         
         if checkBots() {
             damage = combat.calcDamagePlayer(playerRobot, attackIndex)
             enemy.robot.takeDamage(damage)
             attackAnimation(true)
+            info.text = "\(enemy.robot.getName()) took \(damage) damage."
             pauseGame(2.0)
             updateFocusIfNeeded()
-            info.text = "\(enemy.robot.getName()) took \(damage) damage."
             
         }
         checkBots()
@@ -259,9 +259,9 @@ class CombatScene: SKScene {
             gameOver = true
             player.sprite.removeFromParent()
             disableAttacks()
+            info.text = defeat
             pauseGame(2.0)
             updateFocusIfNeeded()
-            info.text = defeat
             print(defeat)
             continueFighting = false
         }
@@ -281,14 +281,12 @@ class CombatScene: SKScene {
             } else {
                 gameOver = true
                 disableAttacks()
+                info.text = victory
                 pauseGame(2.0)
                 updateFocusIfNeeded()
-                info.text = victory
                 print(victory)
             }
-            
         }
-        
         return continueFighting
     }
     
