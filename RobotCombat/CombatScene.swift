@@ -201,18 +201,19 @@ class CombatScene: SKScene {
         
         enemy.robot.takeDamage(damage)
         attackAnimation(true)
-        pauseGame(2.0)
         info.text = "\(enemy.robot.getName()) took \(damage) damage."
+        pauseGame(2.0)
         
         if checkBots() {
             damage = combat.calcDamageAI(enemy.robot.getName())
             player.robot.takeDamage(damage)
             attackAnimation(false)
-            pauseGame(2.0)
             info.text = "\(player.robot.getName()) took \(damage) damage."
         }
         
-        checkBots()
+        if checkBots() {
+            pauseGame(2.0)
+        }
     }
     
     func executeAttackEnemy() {
@@ -221,17 +222,19 @@ class CombatScene: SKScene {
         
         player.robot.takeDamage(damage)
         attackAnimation(false)
-        pauseGame(2.0)
         info.text = "\(player.robot.getName()) took \(damage) damage."
+        pauseGame(2.0)
         
         if checkBots() {
             damage = combat.calcDamagePlayer(playerRobot, attackIndex)
             enemy.robot.takeDamage(damage)
             attackAnimation(true)
-            pauseGame(2.0)
             info.text = "\(enemy.robot.getName()) took \(damage) damage."
         }
-        checkBots()
+        
+        if checkBots() {
+            pauseGame(2.0)
+        }
     }
     
     // Checks the status of the robots.
@@ -252,8 +255,8 @@ class CombatScene: SKScene {
             gameOver = true
             player.sprite.removeFromParent()
             disableAttacks()
-            pauseGame(2.0)
             info.text = defeat
+            pauseGame(2.0)
             print(defeat)
             continueFighting = false
         }
@@ -273,8 +276,8 @@ class CombatScene: SKScene {
             } else {
                 gameOver = true
                 disableAttacks()
-                pauseGame(2.0)
                 info.text = victory
+                pauseGame(2)
                 print(victory)
             }
         }
@@ -292,7 +295,7 @@ class CombatScene: SKScene {
         
         let wait = SKAction.wait(forDuration: duration)
         
-        run(SKAction.sequence([pause, wait]))
+        run(SKAction.sequence([pause,wait]))
         
         worldNode.isPaused = false
         physicsWorld.speed = 1
@@ -307,6 +310,8 @@ class CombatScene: SKScene {
         attackThree.color = UIColor.red
     }
     
+    // Moves a sprite to signify that that
+    // robot is fighting.
     func attackAnimation(_ playerTurn: Bool) {
         if playerTurn {
             let orignalPos = player.sprite.position
