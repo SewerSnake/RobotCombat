@@ -120,6 +120,7 @@
                         <viewLayoutGuide key="safeArea" id="O3t-mP-DNn"/>
                     </view>
                     <connections>
+                        <outlet property="musicLabel" destination="2VC-U3-g40" id="oCp-nW-RZ5"/>
                         <outlet property="toggleMusic" destination="IfX-Q9-vvW" id="uZJ-dE-F6y"/>
                     </connections>
                 </viewController>

@@ -87,7 +87,7 @@ class CombatScene: SKScene {
         scaleImage(enemySprite, robotName)
         
         addChild(enemySprite)
-        
+        enemySprite.updateFocusIfNeeded()
         enemy = GameObject(sprite: enemySprite, direction: 0.0, speed: 0.0, botName: robotName)
     }
     
@@ -318,14 +318,14 @@ class CombatScene: SKScene {
             
             self.player.sprite.run(
                 SKAction.sequence([SKAction.move(to: self.enemy.sprite.position, duration: 2),
-                                   SKAction.wait(forDuration: 3),
+                                   SKAction.wait(forDuration: 1),
                                    SKAction.move(to: orignalPos, duration: 2)]))
         } else {
             let orignalPos = enemy.sprite.position
             
             self.enemy.sprite.run(
                 SKAction.sequence([SKAction.move(to: self.player.sprite.position, duration: 2),
-                                   SKAction.wait(forDuration: 3),
+                                   SKAction.wait(forDuration: 1),
                                    SKAction.move(to: orignalPos, duration: 2)]))
         }
     }

@@ -12,8 +12,16 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var toggleMusic: UISwitch!
     
+    @IBOutlet weak var musicLabel: UILabel!
+    
+    // Sets a background image and changes
+    // the UILabel to bold font. Its color
+    // becomes white.
     override func viewDidLoad() {
         super.viewDidLoad()
+        musicLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+        musicLabel.textColor = UIColor.white
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "arena")!)
     }
 
     override func didReceiveMemoryWarning() {
