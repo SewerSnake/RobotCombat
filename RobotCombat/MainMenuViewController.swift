@@ -9,14 +9,19 @@
 import UIKit
 
 class MainMenuViewController: UIViewController {
+    
+    private let preferences: UserDefaults = UserDefaults.standard
+    
+    private let key: String = "music"
 
-    // Starts playing background music.
-    // The name of the file is
-    // "intro.mp3".
+    // Starts playing background music if the user has
+    // actviated it. The name of the file is "intro.mp3".
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        BackgroundMusic.sharedHelper.playBackgroundMusic()
+        if preferences.bool(forKey: key) {
+            BackgroundMusic.sharedHelper.playBackgroundMusic()
+        }
     }
 
     override func didReceiveMemoryWarning() {
