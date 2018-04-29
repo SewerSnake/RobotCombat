@@ -29,7 +29,7 @@ class ChooseRobotViewController: UIViewController {
     private var currentIndex: Int!
 
     // Assigns the array with the names
-    // of the robots in the game.
+    // of the robots in the game. 
     // Loads the picture and stats of
     // the robot "Sewer Snake".
     override func viewDidLoad() {
@@ -38,6 +38,12 @@ class ChooseRobotViewController: UIViewController {
         self.currentIndex = 0
         
         self.robots = ["Sewer Snake","Last Rites","Original Sin","Spectre"]
+        
+        robotName.font = UIFont.boldSystemFont(ofSize: 18)
+        
+        robotHP.font = UIFont(name: "American Typewriter", size: 17)
+        
+        robotATK.font = UIFont(name: "American Typewriter", size: 17)
         
         loadImageForIndex()
         
