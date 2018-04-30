@@ -66,21 +66,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="abb-wG-CTZ">
-                                <rect key="frame" x="16" y="72" width="343" height="579"/>
+                                <rect key="frame" x="16" y="64" width="343" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">This is a robot combat game, based on the TV shows "Battlebots", "King of Bots" and "Robot Wars". Also features robots from the American event "RoboGames". Choose a robot and beat all of your opponents! Each robot has Hit Points (HP) and an attack value. Three attacks are available to a robot. Simply touch an attack name to do battle!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blacksmith" translatesAutoresizingMaskIntoConstraints="NO" id="U6o-Iu-1Xp">
+                                <rect key="frame" x="42" y="271" width="291" height="169"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="abb-wG-CTZ" firstAttribute="leading" secondItem="1Vy-5Y-fIZ" secondAttribute="leading" constant="16" id="1m0-fj-boa"/>
-                            <constraint firstItem="1Vy-5Y-fIZ" firstAttribute="trailing" secondItem="abb-wG-CTZ" secondAttribute="trailing" constant="16" id="8b1-iL-FFb"/>
-                            <constraint firstItem="abb-wG-CTZ" firstAttribute="top" secondItem="1Vy-5Y-fIZ" secondAttribute="top" constant="8" id="R7v-el-22T"/>
-                            <constraint firstItem="abb-wG-CTZ" firstAttribute="leading" secondItem="1Vy-5Y-fIZ" secondAttribute="leading" constant="16" id="UOC-Tq-smU"/>
-                            <constraint firstItem="1Vy-5Y-fIZ" firstAttribute="bottom" secondItem="abb-wG-CTZ" secondAttribute="bottom" constant="16" id="YXh-Co-e9d"/>
-                            <constraint firstItem="1Vy-5Y-fIZ" firstAttribute="bottom" secondItem="abb-wG-CTZ" secondAttribute="bottom" constant="16" id="nKD-SS-gmb"/>
+                            <constraint firstItem="1Vy-5Y-fIZ" firstAttribute="trailing" secondItem="abb-wG-CTZ" secondAttribute="trailing" constant="16" id="6gW-Uq-amk"/>
+                            <constraint firstItem="abb-wG-CTZ" firstAttribute="top" secondItem="1Vy-5Y-fIZ" secondAttribute="top" id="Vlw-3l-A2e"/>
+                            <constraint firstItem="abb-wG-CTZ" firstAttribute="leading" secondItem="1Vy-5Y-fIZ" secondAttribute="leading" constant="16" id="o7A-ei-iDl"/>
+                            <constraint firstItem="1Vy-5Y-fIZ" firstAttribute="bottom" secondItem="abb-wG-CTZ" secondAttribute="bottom" constant="20" id="z8x-QK-Oab"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Vy-5Y-fIZ"/>
                     </view>
@@ -251,4 +253,7 @@
             <point key="canvasLocation" x="129" y="133"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="blacksmith" width="960" height="960"/>
+    </resources>
 </document>
