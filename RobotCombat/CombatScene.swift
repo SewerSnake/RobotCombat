@@ -316,20 +316,26 @@ class CombatScene: SKScene {
     // Moves a sprite to signify that that
     // robot is fighting.
     func attackAnimation(_ playerTurn: Bool) {
+        let originalPos: CGPoint
+        
         if playerTurn {
-            let orignalPos = self.player.sprite.position
+            originalPos = self.player.sprite.position
             
             self.player.sprite.run(
                 SKAction.sequence([SKAction.move(to: self.enemy.sprite.position, duration: 2),
                                    SKAction.wait(forDuration: 1),
-                                   SKAction.move(to: orignalPos, duration: 2)]))
+                                   SKAction.move(to: originalPos, duration: 2)]
+                )
+            )
         } else {
-            let orignalPos = self.enemy.sprite.position
+            originalPos = self.enemy.sprite.position
             
             self.enemy.sprite.run(
                 SKAction.sequence([SKAction.move(to: self.player.sprite.position, duration: 2),
                                    SKAction.wait(forDuration: 1),
-                                   SKAction.move(to: orignalPos, duration: 2)]))
+                                   SKAction.move(to: originalPos, duration: 2)]
+                )
+            )
         }
     }
     
