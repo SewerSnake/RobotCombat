@@ -155,7 +155,7 @@ class CombatScene: SKScene {
     // first and starts battle.
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if gameOver == false {
+        if gameOver == false && !playerSprite.hasActions() && !enemySprite.hasActions() {
             
             let firstMove: UInt32 = arc4random_uniform(2)
             attackIndex = 0
@@ -270,7 +270,9 @@ class CombatScene: SKScene {
             
             if beatenRobots != 3 {
                 player.robot.repair()
+                
                 if gameOver == false {
+                    //repeat {} while enemySprite.hasActions()
                     makeEnemy()
                 }
             } else {
@@ -314,14 +316,14 @@ class CombatScene: SKScene {
     // robot is fighting.
     func attackAnimation(_ playerTurn: Bool) {
         if playerTurn {
-            let orignalPos = player.sprite.position
+            let orignalPos = self.player.sprite.position
             
             self.player.sprite.run(
                 SKAction.sequence([SKAction.move(to: self.enemy.sprite.position, duration: 2),
                                    SKAction.wait(forDuration: 1),
                                    SKAction.move(to: orignalPos, duration: 2)]))
         } else {
-            let orignalPos = enemy.sprite.position
+            let orignalPos = self.enemy.sprite.position
             
             self.enemy.sprite.run(
                 SKAction.sequence([SKAction.move(to: self.player.sprite.position, duration: 2),
