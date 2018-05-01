@@ -12,13 +12,17 @@ import GameplayKit
 
 class CombatScene: SKScene {
     
+    private let userDefaults: UserDefaults = UserDefaults.standard
+    
+    private let playerRobotKey = "playerRobot"
+    
     private let victory: String = "You won!"
     
     private let defeat: String = "Game over..."
     
     private var combat: Combat = Combat()
     
-    private var pitStop : PitStop = PitStop()
+    private var pitStop: PitStop = PitStop()
     
     private let worldNode: SKNode = SKNode()
     
@@ -59,9 +63,7 @@ class CombatScene: SKScene {
     // GameObject also holds a Robot property,
     // for storing its HP and ATK.
     func makePlayer() {
-        let userDefaults: UserDefaults = UserDefaults.standard
-        
-        playerRobot = userDefaults.string(forKey: "playerRobot")!
+        playerRobot = userDefaults.string(forKey: playerRobotKey)!
         
         playerSprite = SKSpriteNode(imageNamed: playerRobot)
         
@@ -254,11 +256,15 @@ class CombatScene: SKScene {
         
         if player.robot.isDestroyed() {
             gameOver = true
+            
             player.sprite.removeFromParent()
+            
             disableAttacks()
+            
             info.text = defeat
+            
             pauseGame(2.0)
-            print(defeat)
+            
             continueFighting = false
         }
         
@@ -273,15 +279,18 @@ class CombatScene: SKScene {
                 player.robot.repair()
                 
                 if gameOver == false {
+                    // Wait until the enemy has stopped moving
                     //repeat {} while enemySprite.hasActions()
                     makeEnemy()
                 }
             } else {
                 gameOver = true
+                
                 disableAttacks()
+                
                 info.text = victory
+                
                 pauseGame(2)
-                print(victory)
             }
         }
         return continueFighting
@@ -313,12 +322,12 @@ class CombatScene: SKScene {
         attackThree.color = UIColor.red
     }
     
-    // Moves a sprite to signify that that
+    // Moves a sprite to signify that the
     // robot is fighting.
-    func attackAnimation(_ playerTurn: Bool) {
+    func attackAnimation(_ isPlayersTurn: Bool) {
         let originalPos: CGPoint
         
-        if playerTurn {
+        if isPlayersTurn {
             originalPos = self.player.sprite.position
             
             self.player.sprite.run(

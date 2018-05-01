@@ -14,9 +14,9 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var musicLabel: UILabel!
     
-    private let preferences: UserDefaults = UserDefaults.standard
+    private let userDefaults: UserDefaults = UserDefaults.standard
     
-    private let key: String = "music"
+    private let musicKey: String = "music"
     
     // Loads the state of the UISwitch from memory,
     // to symbolize if the music is playing or not.
@@ -26,7 +26,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        toggleMusic.setOn(preferences.bool(forKey: key), animated: false)
+        toggleMusic.setOn(userDefaults.bool(forKey: musicKey), animated: false)
         
         musicLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
         
@@ -46,13 +46,13 @@ class SettingsViewController: UIViewController {
     @IBAction func musicSwitch(_ sender: Any) {
         
         if toggleMusic.isOn {
-            preferences.set(true, forKey: key)
+            userDefaults.set(true, forKey: musicKey)
             BackgroundMusic.sharedHelper.playBackgroundMusic()
         } else {
             BackgroundMusic.sharedHelper.stopMusic()
-            preferences.set(false, forKey: key)
+            userDefaults.set(false, forKey: musicKey)
         }
-        preferences.synchronize()
+        userDefaults.synchronize()
     }
     
 }
