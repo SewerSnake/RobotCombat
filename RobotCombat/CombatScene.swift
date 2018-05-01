@@ -149,7 +149,8 @@ class CombatScene: SKScene {
         addChild(attackThree)
     }
     
-    // Action is only taken if the game hasn't ended.
+    // Action is only taken if the game hasn't ended and
+    // the robots aren't currently fighting.
     // Registers which attack the user pressed.
     // Randomly decides which robot that will attack
     // first and starts battle.
