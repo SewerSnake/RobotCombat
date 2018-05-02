@@ -126,7 +126,6 @@ class CombatScene: SKScene {
         worldNode.addChild(info)
         addChild(worldNode)
         
-        attackOne.color = UIColor.green
         attackOne.fontSize = 30
         attackOne.fontName = "American Typewriter"
         attackOne.position = CGPoint(x: -self.size.width / 3, y: -self.size.height / 2.4)
@@ -134,7 +133,6 @@ class CombatScene: SKScene {
         attackOne.name = "attackOne"
         addChild(attackOne)
         
-        attackTwo.color = UIColor.green
         attackTwo.fontSize = 30
         attackTwo.fontName = "American Typewriter"
         attackTwo.position = CGPoint(x: 0, y: -self.size.height / 2.4)
@@ -142,13 +140,16 @@ class CombatScene: SKScene {
         attackTwo.name = "attackTwo"
         addChild(attackTwo)
         
-        attackThree.color = UIColor.green
         attackThree.fontSize = 30
         attackThree.fontName = "American Typewriter"
         attackThree.position = CGPoint(x: self.size.width / 3, y: -self.size.height / 2.4)
         attackThree.text = attacks[2]
         attackThree.name = "attackThree"
         addChild(attackThree)
+        
+        attackOne.run(SKAction.colorize(with: UIColor.green, colorBlendFactor: 1, duration: 1))
+        attackTwo.run(SKAction.colorize(with: UIColor.green, colorBlendFactor: 1, duration: 1))
+        attackThree.run(SKAction.colorize(with: UIColor.green, colorBlendFactor: 1, duration: 1))
     }
     
     // Action is only taken if the game hasn't ended and
@@ -186,17 +187,11 @@ class CombatScene: SKScene {
         }
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {}
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {}
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {}
     
     func executeAttackPlayer() {
         print("Player attacks!")
@@ -280,7 +275,7 @@ class CombatScene: SKScene {
                 
                 if gameOver == false {
                     // Wait until the enemy has stopped moving
-                    //repeat {} while enemySprite.hasActions()
+                    // repeat {} while enemySprite.hasActions()
                     makeEnemy()
                 }
             } else {
@@ -307,7 +302,7 @@ class CombatScene: SKScene {
         
         let wait = SKAction.wait(forDuration: duration)
         
-        run(SKAction.sequence([pause,wait]))
+        run(SKAction.sequence([pause, wait]))
         
         worldNode.isPaused = false
         physicsWorld.speed = 1
@@ -317,9 +312,9 @@ class CombatScene: SKScene {
     // "buttons" to red, to indicate
     // that the user shouldn't press them.
     func disableAttacks() {
-        attackOne.color = UIColor.red
-        attackTwo.color = UIColor.red
-        attackThree.color = UIColor.red
+        attackOne.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1, duration: 1))
+        attackTwo.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1, duration: 1))
+        attackThree.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1, duration: 1))
     }
     
     // Moves a sprite to signify that the
@@ -333,18 +328,14 @@ class CombatScene: SKScene {
             self.player.sprite.run(
                 SKAction.sequence([SKAction.move(to: self.enemy.sprite.position, duration: 2),
                                    SKAction.wait(forDuration: 1),
-                                   SKAction.move(to: originalPos, duration: 2)]
-                )
-            )
+                                   SKAction.move(to: originalPos, duration: 2)]))
         } else {
             originalPos = self.enemy.sprite.position
             
             self.enemy.sprite.run(
                 SKAction.sequence([SKAction.move(to: self.player.sprite.position, duration: 2),
                                    SKAction.wait(forDuration: 1),
-                                   SKAction.move(to: originalPos, duration: 2)]
-                )
-            )
+                                   SKAction.move(to: originalPos, duration: 2)]))
         }
     }
     
