@@ -276,6 +276,8 @@ class CombatScene: SKScene {
                 if gameOver == false {
                     // Wait until the enemy has stopped moving
                     // repeat {} while enemySprite.hasActions()
+                    // could potentially work, but it seems to
+                    // makes the app crash.
                     makeEnemy()
                 }
             } else {
@@ -293,6 +295,7 @@ class CombatScene: SKScene {
     
     // Pauses the game for the specified
     // TimeInterval. The unit is seconds.
+    // DOESN'T SEEM TO WORK, THOUGH...
     func pauseGame(_ duration: TimeInterval) {
         
         let pause = SKAction.run {
