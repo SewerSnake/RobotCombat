@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -141,43 +142,46 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A4a-X4-obe">
                                 <rect key="frame" x="27" y="187" width="320" height="186"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="186" id="I7N-GH-xGy"/>
+                                    <constraint firstAttribute="width" secondItem="A4a-X4-obe" secondAttribute="height" multiplier="160:93" id="og1-PP-GLs"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ah1-fI-EzZ">
-                                <rect key="frame" x="149" y="617" width="76" height="30"/>
+                                <rect key="frame" x="152.5" y="617" width="69" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Start game"/>
                                 <connections>
                                     <segue destination="uXd-aF-Pe7" kind="show" identifier="combatSegue" id="exb-yD-ktK"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQw-NS-nvf">
-                                <rect key="frame" x="175.5" y="471" width="23" height="21"/>
+                                <rect key="frame" x="175.5" y="444" width="23" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x93-zd-Abx">
-                                <rect key="frame" x="164.5" y="418" width="45" height="21"/>
+                                <rect key="frame" x="164.5" y="403" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ATK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0oG-gA-rkc">
-                                <rect key="frame" x="171.5" y="529" width="31" height="21"/>
+                                <rect key="frame" x="171.5" y="485" width="31" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cuZ-6f-yRq">
-                                <rect key="frame" x="16" y="617" width="100" height="30"/>
-                                <state key="normal" title="Previous robot"/>
+                                <rect key="frame" x="16" y="617" width="63" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Last robot"/>
                                 <connections>
                                     <action selector="previous:" destination="h69-wq-cgm" eventType="touchUpInside" id="AZ0-Gs-UZA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05I-bu-GWl">
-                                <rect key="frame" x="286" y="617" width="73" height="30"/>
+                                <rect key="frame" x="294" y="617" width="65" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Next robot"/>
                                 <connections>
                                     <action selector="next:" destination="h69-wq-cgm" eventType="touchUpInside" id="bBQ-d4-ikG"/>
@@ -189,18 +193,20 @@
                             <constraint firstItem="05I-bu-GWl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Xm7-Ey-ZvH" secondAttribute="leading" constant="20" symbolic="YES" id="7Qx-Br-wrM"/>
                             <constraint firstItem="ogD-Zu-aIl" firstAttribute="bottom" secondItem="Ah1-fI-EzZ" secondAttribute="bottom" constant="20" id="HsG-sQ-4yU"/>
                             <constraint firstItem="A4a-X4-obe" firstAttribute="leading" secondItem="ogD-Zu-aIl" secondAttribute="leading" constant="27" id="Lif-NR-89N"/>
-                            <constraint firstItem="0oG-gA-rkc" firstAttribute="top" secondItem="aQw-NS-nvf" secondAttribute="bottom" constant="37" id="OiP-vc-PIg"/>
+                            <constraint firstItem="0oG-gA-rkc" firstAttribute="top" secondItem="aQw-NS-nvf" secondAttribute="bottom" constant="20" id="OiP-vc-PIg"/>
                             <constraint firstItem="ogD-Zu-aIl" firstAttribute="bottom" secondItem="cuZ-6f-yRq" secondAttribute="bottom" constant="20" id="OyD-cs-2Tk"/>
-                            <constraint firstItem="aQw-NS-nvf" firstAttribute="top" secondItem="x93-zd-Abx" secondAttribute="bottom" constant="32" id="QIb-bv-rzf"/>
+                            <constraint firstItem="aQw-NS-nvf" firstAttribute="top" secondItem="x93-zd-Abx" secondAttribute="bottom" constant="20" id="QIb-bv-rzf"/>
                             <constraint firstItem="Ah1-fI-EzZ" firstAttribute="centerX" secondItem="ogD-Zu-aIl" secondAttribute="centerX" id="UVc-Fp-S9G"/>
                             <constraint firstItem="ogD-Zu-aIl" firstAttribute="bottom" secondItem="05I-bu-GWl" secondAttribute="bottom" constant="20" id="VbZ-bp-wpw"/>
                             <constraint firstItem="A4a-X4-obe" firstAttribute="centerX" secondItem="0oG-gA-rkc" secondAttribute="centerX" id="ZW1-ga-Nus"/>
                             <constraint firstItem="A4a-X4-obe" firstAttribute="centerX" secondItem="ogD-Zu-aIl" secondAttribute="centerX" id="bim-x1-utX"/>
                             <constraint firstItem="ogD-Zu-aIl" firstAttribute="trailing" secondItem="05I-bu-GWl" secondAttribute="trailing" constant="16" id="dpy-J8-oCt"/>
+                            <constraint firstItem="Ah1-fI-EzZ" firstAttribute="centerY" secondItem="05I-bu-GWl" secondAttribute="centerY" id="em7-fH-hGf"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cuZ-6f-yRq" secondAttribute="trailing" constant="20" symbolic="YES" id="l33-s5-KNj"/>
                             <constraint firstItem="A4a-X4-obe" firstAttribute="centerX" secondItem="aQw-NS-nvf" secondAttribute="centerX" id="qHN-RR-Jcz"/>
                             <constraint firstItem="A4a-X4-obe" firstAttribute="centerX" secondItem="x93-zd-Abx" secondAttribute="centerX" id="rED-6g-9Wr"/>
-                            <constraint firstItem="x93-zd-Abx" firstAttribute="top" secondItem="A4a-X4-obe" secondAttribute="bottom" constant="45" id="xK8-uD-HIi"/>
+                            <constraint firstItem="cuZ-6f-yRq" firstAttribute="centerY" secondItem="Ah1-fI-EzZ" secondAttribute="centerY" id="w8d-iR-MdF"/>
+                            <constraint firstItem="x93-zd-Abx" firstAttribute="top" secondItem="A4a-X4-obe" secondAttribute="bottom" constant="30" id="xK8-uD-HIi"/>
                             <constraint firstItem="A4a-X4-obe" firstAttribute="top" secondItem="ogD-Zu-aIl" secondAttribute="top" constant="123" id="xLP-jZ-gyk"/>
                             <constraint firstItem="cuZ-6f-yRq" firstAttribute="leading" secondItem="ogD-Zu-aIl" secondAttribute="leading" constant="16" id="zHS-IP-6d4"/>
                         </constraints>
