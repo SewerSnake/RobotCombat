@@ -91,7 +91,7 @@ class CombatScene: SKScene {
         scaleImage(enemySprite, robotName)
         
         addChild(enemySprite)
-        enemySprite.updateFocusIfNeeded()
+        
         enemy = GameObject(sprite: enemySprite, direction: 0.0, speed: 0.0, botName: robotName)
     }
     
