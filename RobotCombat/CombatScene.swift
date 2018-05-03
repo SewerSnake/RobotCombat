@@ -16,9 +16,11 @@ class CombatScene: SKScene {
     
     private let playerRobotKey = "playerRobot"
     
-    private let victory: String = "You won!"
+    private let desiredFont = "American Typewriter"
     
-    private let defeat: String = "Game over..."
+    private let victory: String = "YOU WON!"
+    
+    private let defeat: String = "GAME OVER..."
     
     private var combat: Combat = Combat()
     
@@ -120,28 +122,28 @@ class CombatScene: SKScene {
         
         info.color = UIColor.white
         info.fontSize = 26
-        info.fontName = "American Typewriter"
+        info.fontName = desiredFont
         info.position = CGPoint(x: 0, y: -self.size.height / 2.1)
         info.text = ""
         worldNode.addChild(info)
         addChild(worldNode)
         
         attackOne.fontSize = 30
-        attackOne.fontName = "American Typewriter"
+        attackOne.fontName = desiredFont
         attackOne.position = CGPoint(x: -self.size.width / 3, y: -self.size.height / 2.4)
         attackOne.text = attacks[0]
         attackOne.name = "attackOne"
         addChild(attackOne)
         
         attackTwo.fontSize = 30
-        attackTwo.fontName = "American Typewriter"
+        attackTwo.fontName = desiredFont
         attackTwo.position = CGPoint(x: 0, y: -self.size.height / 2.4)
         attackTwo.text = attacks[1]
         attackTwo.name = "attackTwo"
         addChild(attackTwo)
         
         attackThree.fontSize = 30
-        attackThree.fontName = "American Typewriter"
+        attackThree.fontName = desiredFont
         attackThree.position = CGPoint(x: self.size.width / 3, y: -self.size.height / 2.4)
         attackThree.text = attacks[2]
         attackThree.name = "attackThree"
@@ -200,17 +202,12 @@ class CombatScene: SKScene {
         enemy.robot.takeDamage(damage)
         attackAnimation(true)
         info.text = "\(enemy.robot.getName()) took \(damage) damage."
-        pauseGame(2.0)
         
-        if checkBots() {
+        if enemy.robot.getHp() > 0 {
             damage = combat.calcDamageAI(enemy.robot.getName())
             player.robot.takeDamage(damage)
             attackAnimation(false)
             info.text = "\(player.robot.getName()) took \(damage) damage."
-        }
-        
-        if checkBots() {
-            pauseGame(2.0)
         }
     }
     
@@ -221,17 +218,12 @@ class CombatScene: SKScene {
         player.robot.takeDamage(damage)
         attackAnimation(false)
         info.text = "\(player.robot.getName()) took \(damage) damage."
-        pauseGame(2.0)
         
-        if checkBots() {
+        if player.robot.getHp() > 0 {
             damage = combat.calcDamagePlayer(playerRobot, attackIndex)
             enemy.robot.takeDamage(damage)
             attackAnimation(true)
             info.text = "\(enemy.robot.getName()) took \(damage) damage."
-        }
-        
-        if checkBots() {
-            pauseGame(2.0)
         }
     }
     
@@ -246,8 +238,7 @@ class CombatScene: SKScene {
     // However, if three robots have been
     // defeated, the player is declared
     // to have won the game.
-    func checkBots() -> Bool {
-        var continueFighting: Bool = true
+    func checkBots() {
         
         if player.robot.isDestroyed() {
             gameOver = true
@@ -257,14 +248,9 @@ class CombatScene: SKScene {
             disableAttacks()
             
             info.text = defeat
-            
-            pauseGame(2.0)
-            
-            continueFighting = false
         }
         
         if enemy.robot.isDestroyed() {
-            continueFighting = false
             
             beatenRobots = beatenRobots + 1
             
@@ -274,10 +260,6 @@ class CombatScene: SKScene {
                 player.robot.repair()
                 
                 if gameOver == false {
-                    // Wait until the enemy has stopped moving
-                    // repeat {} while enemySprite.hasActions()
-                    // could potentially work, but it seems to
-                    // makes the app crash.
                     makeEnemy()
                 }
             } else {
@@ -286,11 +268,8 @@ class CombatScene: SKScene {
                 disableAttacks()
                 
                 info.text = victory
-                
-                pauseGame(2)
             }
         }
-        return continueFighting
     }
     
     // Pauses the game for the specified
@@ -331,14 +310,19 @@ class CombatScene: SKScene {
             self.player.sprite.run(
                 SKAction.sequence([SKAction.move(to: self.enemy.sprite.position, duration: 2),
                                    SKAction.wait(forDuration: 1),
-                                   SKAction.move(to: originalPos, duration: 2)]))
+                                   SKAction.move(to: originalPos, duration: 2)]), completion: {() -> Void in
+                                    self.checkBots()
+                                    
+            })
         } else {
             originalPos = self.enemy.sprite.position
             
-            self.enemy.sprite.run(
-                SKAction.sequence([SKAction.move(to: self.player.sprite.position, duration: 2),
-                                   SKAction.wait(forDuration: 1),
-                                   SKAction.move(to: originalPos, duration: 2)]))
+            self.enemy.sprite.run(SKAction.sequence([SKAction.move(to: self.player.sprite.position, duration: 2),
+                                                     SKAction.wait(forDuration: 1),
+                                                     SKAction.move(to: originalPos, duration: 2)]), completion: {() -> Void in
+                                                        self.checkBots()
+            })
+            
         }
     }
     
