@@ -52,6 +52,9 @@ class CombatScene: SKScene {
     
     private var enemy: GameObject!
     
+    // Makes the player object, enemy object
+    // and User Interface upon loading the
+    // SKScene.
     override func didMove(to view: SKView) {
         makePlayer()
         makeEnemy()
