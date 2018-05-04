@@ -78,7 +78,7 @@ class CombatScene: SKScene {
         
         addChild(playerSprite)
         
-        player = GameObject(sprite: playerSprite, direction: 0.0, speed: 0.0, botName: playerRobot)
+        player = GameObject(sprite: playerSprite, botName: playerRobot)
     }
     
     // Creates a GameObject for a
@@ -95,7 +95,7 @@ class CombatScene: SKScene {
         
         addChild(enemySprite)
         
-        enemy = GameObject(sprite: enemySprite, direction: 0.0, speed: 0.0, botName: robotName)
+        enemy = GameObject(sprite: enemySprite, botName: robotName)
     }
     
     // Scales the image so that it fits
