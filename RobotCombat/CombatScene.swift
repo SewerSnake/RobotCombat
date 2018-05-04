@@ -204,13 +204,13 @@ class CombatScene: SKScene {
         
         enemy.robot.takeDamage(damage)
         attackAnimation(true)
-        info.text = "\(enemy.robot.getName()) took \(damage) damage."
+        info.text = enemy.robot.getName() + dmgText(damage)
         
         if enemy.robot.getHp() > 0 {
             damage = combat.calcDamageAI(enemy.robot.getName())
             player.robot.takeDamage(damage)
             attackAnimation(false)
-            info.text = "\(player.robot.getName()) took \(damage) damage."
+            info.text = player.robot.getName() + dmgText(damage)
         }
     }
     
@@ -220,14 +220,18 @@ class CombatScene: SKScene {
         
         player.robot.takeDamage(damage)
         attackAnimation(false)
-        info.text = "\(player.robot.getName()) took \(damage) damage."
+        info.text = player.robot.getName() + dmgText(damage)
         
         if player.robot.getHp() > 0 {
             damage = combat.calcDamagePlayer(playerRobot, attackIndex)
             enemy.robot.takeDamage(damage)
             attackAnimation(true)
-            info.text = "\(enemy.robot.getName()) took \(damage) damage."
+            info.text = enemy.robot.getName() + dmgText(damage)
         }
+    }
+    
+    func dmgText(_ damage: Int) -> String {
+        return " took \(damage) damage."
     }
     
     // Checks the status of the robots.
@@ -246,7 +250,7 @@ class CombatScene: SKScene {
         if player.robot.isDestroyed() {
             gameOver = true
             
-            player.sprite.removeFromParent()
+            playerSprite.removeFromParent()
             
             disableAttacks()
             
@@ -257,7 +261,7 @@ class CombatScene: SKScene {
             
             beatenRobots = beatenRobots + 1
             
-            enemy.sprite.removeFromParent()
+            enemySprite.removeFromParent()
             
             if beatenRobots != 3 {
                 player.robot.repair()
@@ -308,19 +312,19 @@ class CombatScene: SKScene {
         let originalPos: CGPoint
         
         if isPlayersTurn {
-            originalPos = self.player.sprite.position
+            originalPos = playerSprite.position
             
-            self.player.sprite.run(
-                SKAction.sequence([SKAction.move(to: self.enemy.sprite.position, duration: 2),
+            playerSprite.run(
+                SKAction.sequence([SKAction.move(to: self.enemySprite.position, duration: 2),
                                    SKAction.wait(forDuration: 1),
                                    SKAction.move(to: originalPos, duration: 2)]), completion: {() -> Void in
                                     self.checkBots()
                                     
             })
         } else {
-            originalPos = self.enemy.sprite.position
+            originalPos = enemySprite.position
             
-            self.enemy.sprite.run(SKAction.sequence([SKAction.move(to: self.player.sprite.position, duration: 2),
+            enemySprite.run(SKAction.sequence([SKAction.move(to: self.playerSprite.position, duration: 2),
                                                      SKAction.wait(forDuration: 1),
                                                      SKAction.move(to: originalPos, duration: 2)]), completion: {() -> Void in
                                                         self.checkBots()
