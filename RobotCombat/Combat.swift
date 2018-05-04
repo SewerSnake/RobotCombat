@@ -46,7 +46,7 @@ class Combat {
     func calcDamageAI(_ enemyRobot: String) -> Int {
         self.robot = enemyRobot
         
-        let attack: Int = Int(arc4random_uniform(3) + 1)
+        let attack: UInt32 = arc4random_uniform(3) + 1
         
         calculate(attack)
         
@@ -59,7 +59,7 @@ class Combat {
     func calcDamagePlayer(_ playerRobot: String, _ attackNumber: Int) -> Int {
         self.robot = playerRobot
         
-        calculate(attackNumber)
+        calculate(UInt32(attackNumber))
         
         return damage
     }
@@ -67,7 +67,7 @@ class Combat {
     // Calculates how much the damage
     // the attack of the robot does
     // to its enemy.
-    func calculate(_ attack: Int) {
+    func calculate(_ attack: UInt32) {
         switch robot {
             
         case "Sewer Snake":
