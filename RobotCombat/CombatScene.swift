@@ -199,7 +199,6 @@ class CombatScene: SKScene {
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {}
     
     func executeAttackPlayer() {
-        print("Player attacks!")
         var damage: Int = combat.calcDamagePlayer(playerRobot, attackIndex)
         
         enemy.robot.takeDamage(damage)
@@ -215,7 +214,6 @@ class CombatScene: SKScene {
     }
     
     func executeAttackEnemy() {
-        print("Enemy attacks!")
         var damage: Int = combat.calcDamageAI(enemy.robot.getName())
         
         player.robot.takeDamage(damage)

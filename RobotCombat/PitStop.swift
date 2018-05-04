@@ -25,7 +25,6 @@ class PitStop {
     // "Sewer Snake" is returned as a default
     // value.
     func getRobot(_ theBot: String) -> Robot {
-        
         switch theBot {
             
         case "Sewer Snake":

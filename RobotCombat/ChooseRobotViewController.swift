@@ -27,6 +27,8 @@ class ChooseRobotViewController: UIViewController {
     private var robots: [String]!
     
     private var currentIndex: Int!
+    
+    private let playerRobotKey = "playerRobot"
 
     // Assigns the array with the names
     // of the robots in the game.
@@ -104,12 +106,15 @@ class ChooseRobotViewController: UIViewController {
    
     // MARK: - Navigation
     
+    // Saves the name of the robot the
+    // player chose to UserDefaults before
+    // transitioning to CombatScene.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "combatSegue" {
             let userDefaults: UserDefaults = UserDefaults.standard
             
-            userDefaults.set(self.robots[currentIndex], forKey: "playerRobot")
+            userDefaults.set(self.robots[currentIndex], forKey: playerRobotKey)
             
             userDefaults.synchronize()
         }
