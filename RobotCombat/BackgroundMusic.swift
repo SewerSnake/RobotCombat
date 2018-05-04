@@ -15,7 +15,9 @@ class BackgroundMusic {
     
     private var audioPlayer: AVAudioPlayer?
     
-    private let error = "Cannot play mp3 file"
+    private let error1 = "Cannot parse url"
+    
+    private let error2 = "Cannot play mp3 file"
     
     static let sharedHelper = BackgroundMusic()
     
@@ -24,7 +26,7 @@ class BackgroundMusic {
         let path: String? = Bundle.main.path(forResource: audioFile, ofType: "mp3")
         
         guard let url = Bundle.main.url(forAuxiliaryExecutable: path!) else {
-            print(error)
+            print(error1)
             return
         }
         
@@ -39,7 +41,7 @@ class BackgroundMusic {
             
             audioPlayer!.play()
         } catch {
-            print(error)
+            print(error2)
             return
         }
     }
