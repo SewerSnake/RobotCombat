@@ -96,7 +96,7 @@ class CombatScene: SKScene {
         
         enemy = GameObject(sprite: enemySprite, botName: robotName)
         
-        enemySprite.run(SKAction.move(to: CGPoint(x: 0, y: self.size.height / 4), duration: 3))
+        enemySprite.run(SKAction.move(to: CGPoint(x: 0, y: self.size.height / 4), duration: 2))
     }
     
     // Scales the image so that it fits
@@ -200,33 +200,39 @@ class CombatScene: SKScene {
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {}
     
     func executeAttackPlayer() {
-        var damage: Int = combat.calcDamagePlayer(playerRobot, attackIndex)
+        let damageEnemy: Int = combat.calcDamagePlayer(playerRobot, attackIndex)
+        let damagePlayer: Int = combat.calcDamageAI(enemy.robot.getName())
+        var outputText: String
         
-        enemy.robot.takeDamage(damage)
+        enemy.robot.takeDamage(damageEnemy)
+        outputText = "Enemy" + dmgText(damageEnemy)
         attackAnimation(true)
-        info.text = enemy.robot.getName() + dmgText(damage)
         
         if enemy.robot.getHp() > 0 {
-            damage = combat.calcDamageAI(enemy.robot.getName())
-            player.robot.takeDamage(damage)
+            player.robot.takeDamage(damagePlayer)
+            outputText.append(" Player" + dmgText(damagePlayer))
             attackAnimation(false)
-            info.text = player.robot.getName() + dmgText(damage)
         }
+        
+        info.text = outputText
     }
     
     func executeAttackEnemy() {
-        var damage: Int = combat.calcDamageAI(enemy.robot.getName())
+        let damagePlayer: Int = combat.calcDamageAI(enemy.robot.getName())
+        let damageEnemy: Int = combat.calcDamagePlayer(playerRobot, attackIndex)
+        var outputText: String
         
-        player.robot.takeDamage(damage)
+        player.robot.takeDamage(damagePlayer)
+        outputText = "Player" + dmgText(damagePlayer)
         attackAnimation(false)
-        info.text = player.robot.getName() + dmgText(damage)
         
         if player.robot.getHp() > 0 {
-            damage = combat.calcDamagePlayer(playerRobot, attackIndex)
-            enemy.robot.takeDamage(damage)
+            enemy.robot.takeDamage(damageEnemy)
+            outputText.append(" Enemy" + dmgText(damageEnemy))
             attackAnimation(true)
-            info.text = enemy.robot.getName() + dmgText(damage)
         }
+        
+        info.text = outputText
     }
     
     func dmgText(_ damage: Int) -> String {
