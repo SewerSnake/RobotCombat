@@ -88,14 +88,15 @@ class CombatScene: SKScene {
         let robotName: String = pitStop.getRandomRobot(playerRobot)
         
         enemySprite = SKSpriteNode(imageNamed: robotName)
-        
-        enemySprite.position = CGPoint(x: 0, y: self.size.height / 4)
+        enemySprite.position = CGPoint(x: 0, y: self.size.height)
         
         scaleImage(enemySprite, robotName)
         
         addChild(enemySprite)
         
         enemy = GameObject(sprite: enemySprite, botName: robotName)
+        
+        enemySprite.run(SKAction.move(to: CGPoint(x: 0, y: self.size.height / 4), duration: 3))
     }
     
     // Scales the image so that it fits
@@ -262,11 +263,11 @@ class CombatScene: SKScene {
             beatenRobots = beatenRobots + 1
             
             if beatenRobots != 3 {
-                player.robot.repair()
-                
                 if gameOver == false {
                     makeEnemy()
                 }
+                
+                player.robot.repair()
             } else {
                 gameOver = true
                 
