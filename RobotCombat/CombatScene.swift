@@ -259,9 +259,9 @@ class CombatScene: SKScene {
         
         if enemy.robot.isDestroyed() {
             
-            beatenRobots = beatenRobots + 1
-            
             enemySprite.removeFromParent()
+            
+            beatenRobots = beatenRobots + 1
             
             if beatenRobots != 3 {
                 player.robot.repair()
@@ -317,19 +317,22 @@ class CombatScene: SKScene {
             playerSprite.run(
                 SKAction.sequence([SKAction.move(to: self.enemySprite.position, duration: 2),
                                    SKAction.wait(forDuration: 1),
-                                   SKAction.move(to: originalPos, duration: 2)]), completion: {() -> Void in
-                                    self.checkBots()
-                                    
-            })
+                                   SKAction.move(to: originalPos, duration: 2)]),
+                completion: {() -> Void in
+                    self.checkBots()
+                }
+            )
         } else {
             originalPos = enemySprite.position
             
-            enemySprite.run(SKAction.sequence([SKAction.move(to: self.playerSprite.position, duration: 2),
-                                                     SKAction.wait(forDuration: 1),
-                                                     SKAction.move(to: originalPos, duration: 2)]), completion: {() -> Void in
-                                                        self.checkBots()
-            })
-            
+            enemySprite.run(
+                SKAction.sequence([SKAction.move(to: self.playerSprite.position, duration: 2),
+                                   SKAction.wait(forDuration: 1),
+                                   SKAction.move(to: originalPos, duration: 2)]),
+                completion: {() -> Void in
+                    self.checkBots()
+                }
+            )
         }
     }
     
